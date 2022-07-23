@@ -13,21 +13,13 @@
             <form>
               <div class="field">
                 <div class="control">
-                  <input
-                    class="input is-medium"
-                    type="text"
-                    placeholder="Name"
-                  />
+                  <InputName v-model="text" />
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
-                  <input
-                    class="input is-medium"
-                    type="password"
-                    placeholder="Password"
-                  />
+                  <InputPassword v-model="password" />
                 </div>
               </div>
               <button class="button is-block is-primary is-fullwidth is-medium">
@@ -86,9 +78,26 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'bulma/css/bulma.css'
+import InputName from '../components/atoms/InputName.vue'
+import InputPassword from '../components/atoms/InputPassword.vue'
+
+export type DataType = {
+  text: string
+  password: string
+}
 
 export default Vue.extend({
-  name: 'IndexPage',
+  components: {
+    InputName,
+    InputPassword,
+  },
+  data(): DataType {
+    return {
+      text: '',
+      password: '',
+    }
+  },
+  methods: {},
 })
 </script>
 
