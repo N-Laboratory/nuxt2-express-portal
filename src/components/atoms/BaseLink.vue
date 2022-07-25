@@ -11,7 +11,11 @@ export default Vue.extend({
   },
   methods: {
     goPage(path: string): void {
-      this.$router.push(path)
+      try {
+        this.$router.push(path);
+      } catch (error: any) {
+        this.$nuxt.error(error);
+      }
     },
   },
 })
