@@ -6,15 +6,15 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    text: { type: String, default: ""  },
-    path: { type: String, default: ""  },
+    text: { type: String, default: '' },
+    path: { type: String, default: '' },
   },
   methods: {
     goPage(path: string): void {
       try {
-        this.$router.push(path);
+        this.$router.push(path)
       } catch (error: any) {
-        this.$nuxt.error(error);
+        this.$nuxt.error(error)
       }
     },
   },
