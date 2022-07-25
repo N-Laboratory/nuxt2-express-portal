@@ -13,7 +13,7 @@
           </div>
           <div class="column right has-text-centered">
             <h1 class="title is-4">Sign Up</h1>
-            <LoginForm />
+            <LoginForm @click="login" />
             <div class="columns">
               <div class="column">
                 <BaseLink path="/resetPassword/input" text="Forgot Password?" />
@@ -37,11 +37,24 @@ import Vue from 'vue'
 import 'bulma/css/bulma.css'
 import LoginForm from '../components/molecule/LoginForm.vue'
 import BaseLink from '../components/atoms/BaseLink.vue'
+import { User } from './../model/User'
 
 export default Vue.extend({
   components: {
     LoginForm,
     BaseLink,
+  },
+  methods: {
+    login(user: User): void {
+      try {
+        console.log('Name:' + user.getName())
+        console.log('Password:' + user.getPassword())
+        console.log('do login')
+        this.$router.push('/')
+      } catch (error: any) {
+        this.$nuxt.error(error)
+      }
+    },
   },
 })
 </script>

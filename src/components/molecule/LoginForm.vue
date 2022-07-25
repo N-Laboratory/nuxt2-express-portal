@@ -16,14 +16,17 @@
         />
       </div>
     </div>
-    <BaseSubmit @click="login" />
+    <BaseSubmit text="Submit" @click="login" />
     <br />
   </div>
 </template>
+
 <script lang="ts">
 import Vue from 'vue'
 import BaseInput from '../atoms/BaseInput.vue'
 import BaseSubmit from '../atoms/BaseSubmit.vue'
+import { User } from './../../model/User'
+
 export type DataType = {
   name: string
   password: string
@@ -38,9 +41,7 @@ export default Vue.extend({
   },
   methods: {
     login(): void {
-      console.log('Name:' + this.name)
-      console.log('Password:' + this.password)
-      console.log('do login')
+      this.$emit('click', new User(this.name, this.password))
     },
   },
 })
