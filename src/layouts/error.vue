@@ -22,6 +22,7 @@
 <script>
 import BaseLink from '../components/atoms/BaseLink.vue'
 import 'bulma/css/bulma.css'
+
 export default {
   components: { BaseLink },
   props: {

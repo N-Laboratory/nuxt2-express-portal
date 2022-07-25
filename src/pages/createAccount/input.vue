@@ -1,7 +1,27 @@
 <template>
-  <h1>createAccount</h1>
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <div class="column is-half is-offset-3">
+          <RegisterAccountForm @click="goNext" />
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
+
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+import RegisterAccountForm from '../../components/molecule/RegisterAccountForm.vue'
+import { User } from '../../model/User'
+
+export default Vue.extend({
+  components: { RegisterAccountForm },
+  methods: {
+    goNext(user: User): void {
+      console.log('name:' + user.getName())
+      console.log('password:' + user.getPassword())
+    },
+  },
+})
 </script>

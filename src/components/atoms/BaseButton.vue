@@ -1,7 +1,7 @@
 <template>
   <button
-    class="button is-block is-primary is-fullwidth is-medium"
-    @click="submit"
+    class="button is-link is-fullwidth"
+    @click="goNext"
     v-text="text"
   ></button>
 </template>
@@ -14,7 +14,7 @@ export default Vue.extend({
     text: { type: String, default: '' },
   },
   methods: {
-    submit(): void {
+    goNext() {
       this.$emit('click')
     },
   },
