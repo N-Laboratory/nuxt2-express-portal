@@ -4,14 +4,14 @@
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
       <div class="control">
-        <BaseInput v-model="name" type="name" name="name" placeholder="name" />
+        <base-input v-model="name" type="name" name="name" placeholder="name" />
       </div>
     </div>
 
     <div class="field mb-5">
       <label class="label is-size-5">Password</label>
       <div class="control">
-        <BaseInput
+        <base-input
           v-model="password"
           type="password"
           name="password"
@@ -22,7 +22,7 @@
 
     <div class="field mb-3">
       <div class="control">
-        <BaseButton text="次へ" @click="goNext" />
+        <base-button text="次へ" @click="goNext" />
       </div>
     </div>
   </div>
@@ -48,6 +48,7 @@ export default Vue.extend({
   },
   methods: {
     goNext(): void {
+      // TODO add onvaluechanged to emit name and password
       this.$emit('click', new User(this.name, this.password))
     },
   },

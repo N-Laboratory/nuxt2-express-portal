@@ -13,13 +13,13 @@
           </div>
           <div class="column right has-text-centered">
             <h1 class="title is-4">Sign Up</h1>
-            <LoginForm @click="login" />
+            <login-form @click="login" />
             <div class="columns">
               <div class="column">
-                <BaseLink path="/resetPassword/input" text="Forgot Password?" />
+                <base-link path="/resetPassword/input" text="Forgot Password?" />
               </div>
               <div class="column">
-                <BaseLink
+                <base-link
                   path="/createAccount/input"
                   text="Create an Account"
                 />

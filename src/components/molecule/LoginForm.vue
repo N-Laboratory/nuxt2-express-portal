@@ -2,13 +2,13 @@
   <div>
     <div class="field">
       <div class="control">
-        <BaseInput v-model="name" type="text" name="name" placeholder="Name" />
+        <base-input v-model="name" type="text" name="name" placeholder="Name" />
       </div>
     </div>
 
     <div class="field">
       <div class="control">
-        <BaseInput
+        <base-input
           v-model="password"
           type="password"
           name="password"
@@ -16,7 +16,7 @@
         />
       </div>
     </div>
-    <BaseSubmit text="Submit" @click="login" />
+    <base-submit text="Submit" @click="login" />
     <br />
   </div>
 </template>

@@ -6,13 +6,13 @@
           <span>ERROR</span>
           <h2>ページが見つかりません。</h2>
           <p>URLに間違いがないかご確認ください。</p>
-          <BaseLink path="/" text="TOP" />
+          <base-link path="/" text="TOP" />
         </template>
         <template v-else>
           <span>ERROR</span>
           <h2>エラーが発生しました。</h2>
           <p>TOPページより再度操作をお願いします。</p>
-          <BaseLink path="/" text="TOP" />
+          <base-link path="/" text="TOP" />
         </template>
       </div>
     </div>

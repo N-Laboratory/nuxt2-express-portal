@@ -3,7 +3,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="column is-half is-offset-3">
-          <RegisterAccountForm @click="goNext" />
+          <register-accountForm @click="goNext" />
         </div>
       </div>
     </div>
