@@ -19,8 +19,9 @@ export default Vue.extend({
   components: { RegisterAccountForm },
   methods: {
     goNext(user: User): void {
-      console.log('name:' + user.getName())
-      console.log('password:' + user.getPassword())
+      this.$store.commit('updateUser', user)
+      console.log('name:' + this.$store.state.user.getName())
+      console.log('password:' + this.$store.state.user.getPassword())
     },
   },
 })
