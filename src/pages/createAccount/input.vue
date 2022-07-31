@@ -20,8 +20,11 @@ export default Vue.extend({
   methods: {
     goNext(user: User): void {
       this.$store.commit('updateUser', user)
-      console.log('name:' + this.$store.state.user.getName())
-      console.log('password:' + this.$store.state.user.getPassword())
+      try {
+        this.$router.push('confirm')
+      } catch (error: any) {
+        this.$nuxt.error(error)
+      }
     },
   },
 })

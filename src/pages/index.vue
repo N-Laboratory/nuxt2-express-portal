@@ -16,7 +16,10 @@
             <login-form @click="login" />
             <div class="columns">
               <div class="column">
-                <base-link path="/resetPassword/input" text="Forgot Password?" />
+                <base-link
+                  path="/resetPassword/input"
+                  text="Forgot Password?"
+                />
               </div>
               <div class="column">
                 <base-link
