@@ -2,18 +2,35 @@
   <div class="ErrorPage">
     <div class="ErrorPage__content">
       <div class="ErrorPage__inner">
-        <template v-if="error.statusCode === 404">
-          <span>ERROR</span>
-          <h2>ページが見つかりません。</h2>
-          <p>URLに間違いがないかご確認ください。</p>
-          <base-link path="/" text="TOP" />
-        </template>
-        <template v-else>
-          <span>ERROR</span>
-          <h2>エラーが発生しました。</h2>
-          <p>TOPページより再度操作をお願いします。</p>
-          <base-link path="/" text="TOP" />
-        </template>
+        <div class="container">
+          <section class="articles hero is-fullheight">
+            <div class="hero-body">
+              <div class="column is-8 is-offset-2">
+                <div class="card article">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content has-text-centered">
+                        <p
+                          v-if="error.statusCode === 404"
+                          class="is-size-3 article-title"
+                        >
+                          お探しのページが見つかりません
+                        </p>
+                        <p v-else class="is-size-3 article-title">
+                          エラーが発生しました
+                        </p>
+                      </div>
+                    </div>
+                    <div class="content article-body has-text-centered">
+                      <p>TOPページより再度操作をお願いします。</p>
+                      <base-link path="/" text="TOPページへ戻る" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
