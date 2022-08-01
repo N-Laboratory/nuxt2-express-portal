@@ -50,11 +50,11 @@ export default Vue.extend({
     }
   },
   watch: {
-    name(newValue) {
+    name(newValue): void {
       this.value.setName(newValue)
       this.$emit('input', this.value)
     },
-    password(newValue) {
+    password(newValue): void {
       this.value.setPassword(newValue)
       this.$emit('input', this.value)
     },

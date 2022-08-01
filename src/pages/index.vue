@@ -13,7 +13,7 @@
           </div>
           <div class="column right has-text-centered">
             <h1 class="title is-4">Sign Up</h1>
-            <login-form @click="login" />
+            <login-form v-model="user" @click="login" />
             <div class="columns">
               <div class="column">
                 <base-link
@@ -42,16 +42,24 @@ import LoginForm from '../components/molecule/LoginForm.vue'
 import BaseLink from '../components/atoms/BaseLink.vue'
 import { User } from './../model/User'
 
+export type DataType = {
+  user: User
+}
 export default Vue.extend({
   components: {
     LoginForm,
     BaseLink,
   },
+  data(): DataType {
+    return {
+      user: new User('', ''),
+    }
+  },
   methods: {
-    login(user: User): void {
+    login(): void {
       try {
-        console.log('Name:' + user.getName())
-        console.log('Password:' + user.getPassword())
+        console.log('Name:' + this.user.getName())
+        console.log('Password:' + this.user.getPassword())
         console.log('do login')
         this.$router.push('/')
       } catch (error: any) {

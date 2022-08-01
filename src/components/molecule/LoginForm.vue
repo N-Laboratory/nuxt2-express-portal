@@ -33,15 +33,28 @@ export type DataType = {
 }
 export default Vue.extend({
   components: { BaseInput, BaseSubmit },
+  props: {
+    value: User,
+  },
   data(): DataType {
     return {
       name: '',
       password: '',
     }
   },
+  watch: {
+    name(newValue): void {
+      this.value.setName(newValue)
+      this.$emit('input', this.value)
+    },
+    password(newValue): void {
+      this.value.setPassword(newValue)
+      this.$emit('input', this.value)
+    },
+  },
   methods: {
     login(): void {
-      this.$emit('click', new User(this.name, this.password))
+      this.$emit('click')
     },
   },
 })
