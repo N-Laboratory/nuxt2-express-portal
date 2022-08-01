@@ -3,7 +3,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="column is-half is-offset-3">
-          <register-accountForm @click="goNext" />
+          <register-accountForm v-model="user" @click="goNext" />
         </div>
       </div>
     </div>
@@ -15,11 +15,19 @@ import Vue from 'vue'
 import RegisterAccountForm from '../../components/molecule/RegisterAccountForm.vue'
 import { User } from '../../model/User'
 
+export type DataType = {
+  user: User
+}
 export default Vue.extend({
   components: { RegisterAccountForm },
+  data(): DataType {
+    return {
+      user: new User('', ''),
+    }
+  },
   methods: {
-    goNext(user: User): void {
-      this.$store.commit('updateUser', user)
+    goNext(): void {
+      this.$store.commit('updateUser', this.user)
       try {
         this.$router.push('confirm')
       } catch (error: any) {

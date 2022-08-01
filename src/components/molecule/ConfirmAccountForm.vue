@@ -4,14 +4,14 @@
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
       <div class="control">
-        <span v-text="user.getName()"></span>
+        <span v-text="value.getName()"></span>
       </div>
     </div>
 
     <div class="field mb-5">
       <label class="label is-size-5">Password</label>
       <div class="control">
-        <span v-text="user.getPassword()"></span>
+        <span v-text="value.getPassword()"></span>
       </div>
     </div>
 
@@ -28,15 +28,12 @@ import Vue from 'vue'
 import { User } from '../../model/User'
 import BaseButton from '../atoms/BaseButton.vue'
 
-export type DataType = {
-  user: User
-}
 export default Vue.extend({
   components: {
     BaseButton,
   },
   props: {
-    user: { type: User, default: null },
+    value: User,
   },
   methods: {
     goNext(): void {
