@@ -5,7 +5,7 @@
         <div class="column is-half is-offset-3">
           <div class="box">
             <back-section class="mb-5" @click="goBack" />
-            <confirm-account-form :user="user" @click="goNext" />
+            <confirm-account-form v-model="user" @click="goNext" />
           </div>
         </div>
       </div>
@@ -18,6 +18,8 @@ import Vue from 'vue'
 import ConfirmAccountForm from '../../components/molecule/ConfirmAccountForm.vue'
 import BackSection from '../../components/molecule/BackSection.vue'
 import { User } from '../../model/User'
+import { $axios } from '../../utils/api'
+
 export type DataType = {
   user: User
 }
@@ -30,8 +32,10 @@ export default Vue.extend({
     }
   },
   methods: {
-    goNext() {
+    async goNext() {
       console.log('next')
+      const response = await $axios.$get('/api/sayHello')
+      console.log(response)
     },
     goBack() {
       try {

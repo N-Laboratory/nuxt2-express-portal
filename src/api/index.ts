@@ -4,7 +4,7 @@ const app = express()
 app.get(
   '/sayHello',
   (req: Request, res: Response): express.Response<any, Record<string, any>> => {
-    return res.status(200).send(JSON.stringify({ status: '0', message: 'hello' }))
+    return res.send(JSON.stringify({ status: '0', message: 'hello' }))
   }
 )
 
