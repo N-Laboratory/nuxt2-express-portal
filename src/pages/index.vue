@@ -38,7 +38,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'bulma/css/bulma.css'
-import LoginForm from '../components/molecule/LoginForm.vue'
+import LoginForm from '../components/molecules/LoginForm.vue'
 import BaseLink from '../components/atoms/BaseLink.vue'
 import { User } from './../model/User'
 

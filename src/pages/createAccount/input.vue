@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import RegisterAccountForm from '../../components/molecule/RegisterAccountForm.vue'
+import RegisterAccountForm from '../../components/molecules/RegisterAccountForm.vue'
 import { User } from '../../model/User'
 
 export type DataType = {

@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ConfirmAccountForm from '../../components/molecule/ConfirmAccountForm.vue'
-import BackSection from '../../components/molecule/BackSection.vue'
+import ConfirmAccountForm from '../../components/molecules/ConfirmAccountForm.vue'
+import BackSection from '../../components/molecules/BackSection.vue'
 import { User } from '../../model/User'
 import { $axios } from '../../utils/api'
 
