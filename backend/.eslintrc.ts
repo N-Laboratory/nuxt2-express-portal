@@ -3,6 +3,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    es6: true,
   },
   extends: [
     '@nuxtjs/eslint-config-typescript',
@@ -13,5 +14,12 @@ module.exports = {
   // add your custom rules here
   rules: {
     'no-console': 'off',
+  },
+  parserOptions: {
+    ecmaVersion: 7,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 }
