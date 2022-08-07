@@ -1,5 +1,4 @@
-import * as express from 'express'
-import { Request, Response, json } from 'express'
+import express, { Request, Response, json } from 'express'
 import { AppDataSource } from './data-source'
 import { Routes } from './routes'
 import { User } from './entity/User'
