@@ -1,0 +1,33 @@
+{
+  "name": "typeorm-sample",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.17.2",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.2",
+    "typeorm": "0.3.7"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "@nuxtjs/eslint-config-typescript": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@babel/eslint-parser": "^7.16.3",
+    "ts-node": "10.7.0",
+    "prettier": "^2.5.1",
+    "typescript": "4.5.2"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:js && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
+  }
+}
