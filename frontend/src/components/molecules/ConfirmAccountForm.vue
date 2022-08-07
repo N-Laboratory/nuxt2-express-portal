@@ -4,14 +4,14 @@
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
       <div class="control">
-        <span class="is-size-5" v-text="value.getName()"></span>
+        <span class="is-size-5 text-break" v-text="value.getName()"></span>
       </div>
     </div>
 
     <div class="field mb-5">
       <label class="label is-size-5">Password</label>
       <div class="control">
-        <span class="is-size-5" v-text="value.getPassword()"></span>
+        <span class="is-size-5 text-break" v-text="value.getPassword()"></span>
       </div>
     </div>
 
