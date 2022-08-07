@@ -4,6 +4,7 @@
   "description": "Awesome project developed with TypeORM.",
   "type": "module",
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",

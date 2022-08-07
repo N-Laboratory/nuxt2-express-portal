@@ -1,6 +1,7 @@
 import express, { Request, Response, json } from 'express'
 import { AppDataSource } from './data-source'
 import { Routes } from './routes'
+import { generate } from './utils/HashGenerator'
 import { User } from './entity/User'
 
 AppDataSource.initialize()
@@ -38,18 +39,13 @@ AppDataSource.initialize()
     // start express server
     app.listen(3000)
 
+    const hashData = generate('password')
     // insert new users for test
     await AppDataSource.manager.save(
       AppDataSource.manager.create(User, {
         name: 'Timber',
-        password: 'Saw',
-      })
-    )
-
-    await AppDataSource.manager.save(
-      AppDataSource.manager.create(User, {
-        name: 'Phantom',
-        password: 'Assassin',
+        password: hashData[0],
+        salt: hashData[1],
       })
     )
 

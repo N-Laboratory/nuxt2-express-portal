@@ -2,6 +2,7 @@
 import { Request } from 'express'
 import { AppDataSource } from '../data-source'
 import { User } from '../entity/User'
+import { generate } from '../utils/HashGenerator'
 
 export class UserController {
   private userRepository = AppDataSource.getRepository(User)
@@ -15,13 +16,9 @@ export class UserController {
   }
 
   async save(request: Request) {
-    /**
-    HTTP request body as json like this
-    {
-      "firstName": "Integral",
-      "lastName": "Bummper",
-    }
-    */
+    const hashData = generate(request.body.password)
+    request.body.password = hashData[0]
+    request.body.salt = hashData[1]
     return this.userRepository.save(request.body)
   }
 
