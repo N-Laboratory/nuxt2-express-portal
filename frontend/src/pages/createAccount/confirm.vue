@@ -37,6 +37,7 @@ export default Vue.extend({
         .post('/api/users', this.user)
         .then((res) => {
           console.log(res)
+          this.$router.push('complete')
         })
         .catch((err) => {
           console.log('an error occurred.', err)

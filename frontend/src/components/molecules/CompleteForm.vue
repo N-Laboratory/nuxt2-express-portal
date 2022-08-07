@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1 class="title">アカウント確認</h1>
+    <h1 class="title">アカウント登録完了</h1>
+    <div class="field mb-4">
+      <label class="label is-size-5">以下のユーザを作成しました</label>
+    </div>
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
       <div class="control">
@@ -16,8 +19,8 @@
     </div>
 
     <div class="field mb-3">
-      <div class="control">
-        <base-button text="次へ" @click="goNext" />
+      <div class="content article-body has-text-centered">
+        <base-link path="/" text="TOPページへ戻る" />
       </div>
     </div>
   </div>
@@ -25,20 +28,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { User } from '../../model/User'
-import BaseButton from '../atoms/BaseButton.vue'
+import BaseLink from '../atoms/BaseLink.vue'
+import { User } from './../../model/User'
 
 export default Vue.extend({
-  components: {
-    BaseButton,
-  },
+  components: { BaseLink },
   props: {
     value: User,
-  },
-  methods: {
-    goNext(): void {
-      this.$emit('click')
-    },
   },
 })
 </script>
