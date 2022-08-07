@@ -33,9 +33,14 @@ export default Vue.extend({
   },
   methods: {
     async goNext() {
-      console.log('next')
-      const response = await $axios.$get('/api/sayHello')
-      console.log(response)
+      await $axios
+        .post('/api/users', this.user)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log('an error occurred.', err)
+        })
     },
     goBack() {
       try {

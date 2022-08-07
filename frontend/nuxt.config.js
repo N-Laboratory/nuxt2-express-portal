@@ -34,5 +34,14 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   srcDir: 'src/',
-  serverMiddleware: ['~/api'],
+  axios: {
+    proxy: true,
+  },
+  proxy: {
+    // proxy http://localhost:3030/api/hoge to http://localhost:3000/hoge
+    '/api/': {
+      target: 'http://localhost:3000',
+      pathRewrite: { '^/api/': '/' },
+    },
+  },
 }
