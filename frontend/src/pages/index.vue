@@ -69,19 +69,6 @@ export default Vue.extend({
 </script>
 
 <style>
-:root {
-  --brandColor: hsl(166, 67%, 51%);
-  --background: rgb(247, 247, 247);
-  --textDark: hsla(0, 0%, 0%, 0.66);
-  --textLight: hsla(0, 0%, 0%, 0.33);
-}
-
-body {
-  background: var(--background);
-  height: 100vh;
-  color: var(--textDark);
-}
-
 .field:not(:last-child) {
   margin-bottom: 1rem;
 }

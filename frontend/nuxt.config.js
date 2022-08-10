@@ -29,7 +29,7 @@ export default {
     '@nuxt/typescript-build',
   ],
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios','nuxt-fontawesome'],
+  modules: ['@nuxtjs/axios', 'nuxt-fontawesome'],
   fontawesome: {
     imports: [
       {

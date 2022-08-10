@@ -1,0 +1,71 @@
+<template>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <base-link class="navbar-item" path="/">
+        <font-awesome-icon class="fa-house" icon="fa-house" />
+      </base-link>
+
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="targetMenu"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="targetMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item"> About </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"> Test </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item"> テスト1 </a>
+            <a class="navbar-item"> テスト1 </a>
+            <a class="navbar-item"> テスト1</a>
+            <a class="navbar-item"> テスト1 </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item"> その他 </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <base-link class="button is-ghost" path="/">
+              <span class="icon is-small">
+                <i class="far fa-user"></i>
+              </span>
+              <span>Sign up</span>
+            </base-link>
+            <base-link class="button is-link" path="/">
+              <span>Sign in</span>
+            </base-link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+<script>
+import Vue from 'vue'
+import BaseLink from '../atoms/BaseLink.vue'
+export default Vue.extend({
+  components: {
+    BaseLink,
+  },
+})
+</script>
+
+<style>
+.fa-house {
+  font-size: 22px;
+}
+</style>
