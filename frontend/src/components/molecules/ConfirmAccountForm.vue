@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">アカウント確認</h1>
+    <h1 class="title has-text-black">アカウント確認</h1>
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
       <div class="control">

@@ -1,7 +1,7 @@
 <template>
   <validation-observer ref="observer" v-slot="{ invalid }">
     <div class="box">
-      <h1 class="title">アカウント登録</h1>
+      <h1 class="title has-text-black">アカウント登録</h1>
       <div class="field mb-4">
         <label class="label is-size-5">Name</label>
         <div class="control">

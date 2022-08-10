@@ -2,7 +2,7 @@
   <div class="ErrorPage">
     <div class="ErrorPage__content">
       <div class="ErrorPage__inner">
-        <section class="hero is-fullheight">
+        <section class="hero is-fullheight is-dark">
           <div class="hero-body">
             <div class="column is-8 is-offset-2">
               <div class="card article">

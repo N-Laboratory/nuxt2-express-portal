@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">アカウント登録完了</h1>
+    <h1 class="title has-text-black">アカウント登録完了</h1>
     <div class="field mb-4">
       <label class="label is-size-5">以下のユーザを作成しました</label>
     </div>
@@ -20,7 +20,7 @@
 
     <div class="field mb-3">
       <div class="content article-body has-text-centered">
-        <base-link path="/">TOPページへ戻る</base-link>
+        <base-link class="has-text-link" path="/">TOPページへ戻る</base-link>
       </div>
     </div>
   </div>

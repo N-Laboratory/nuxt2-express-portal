@@ -1,6 +1,6 @@
 :root {
   --brandColor: hsl(166, 67%, 51%);
-  --background: rgb(204, 204, 204);
+  --background: rgb(54, 54, 54);
   --textDark: hsla(0, 0%, 0%, 0.66);
   --textLight: hsla(0, 0%, 0%, 0.33);
 }
