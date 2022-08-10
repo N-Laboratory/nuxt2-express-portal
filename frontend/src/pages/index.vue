@@ -12,7 +12,7 @@
             <p>This website is for Learn IT technology.</p>
           </div>
           <div class="column right has-text-centered">
-            <h1 class="title is-4">Sign Up</h1>
+            <h1 class="title is-4">Sign In</h1>
             <login-form v-model="user" @click="login" />
             <div class="columns">
               <div class="column">
