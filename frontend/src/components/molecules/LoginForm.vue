@@ -6,7 +6,7 @@
           <validation-provider
             v-slot="{ errors }"
             name="name"
-            rules="required|max:64"
+            rules="required|alphaNum|max:64"
           >
             <base-input
               v-model="name"
@@ -26,7 +26,7 @@
           <validation-provider
             v-slot="{ errors }"
             name="password"
-            rules="required|max:64"
+            rules="required|alphaNum|max:64"
           >
             <base-input
               v-model="password"
