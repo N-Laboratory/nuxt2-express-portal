@@ -23,7 +23,7 @@
                     </div>
                     <div class="content article-body has-text-centered">
                       <p>TOPページより再度操作をお願いします。</p>
-                      <base-link path="/" text="TOPページへ戻る" />
+                      <base-link path="/">TOPページへ戻る</base-link>
                     </div>
                   </div>
                 </div>

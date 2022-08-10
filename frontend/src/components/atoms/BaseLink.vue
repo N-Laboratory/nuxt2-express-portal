@@ -1,5 +1,5 @@
 <template>
-  <a @click="goNext" v-text="text"></a>
+  <a @click="goNext"><slot></slot></a>
 </template>
 
 <script lang="ts">
@@ -8,7 +8,6 @@ import Vue from 'vue'
 export default Vue.extend({
   props: {
     path: { type: String, default: '' },
-    text: { type: String, default: '' },
   },
   methods: {
     goNext(): void {
