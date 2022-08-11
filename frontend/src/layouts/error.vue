@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import BaseLink from '../components/atoms/BaseLink.vue'
 import 'bulma/css/bulma.css'
 

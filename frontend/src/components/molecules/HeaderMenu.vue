@@ -54,7 +54,7 @@
     </div>
   </nav>
 </template>
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import BaseLink from '../atoms/BaseLink.vue'
 export default Vue.extend({
