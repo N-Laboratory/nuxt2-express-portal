@@ -21,7 +21,7 @@ export default Vue.extend({
   },
   methods: {
     sendValue(event: { target: HTMLButtonElement }): void {
-      this.$emit('input', event.target.value)
+      this.$emit('input', event.target.value.trim())
     },
   },
 })
