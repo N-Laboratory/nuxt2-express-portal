@@ -16,7 +16,7 @@
       "@/*": ["./*"]
     },
     "resolveJsonModule": true,
-    "types": ["@nuxt/types", "@types/node", "@nuxtjs/axios"]
+    "types": ["@nuxt/types", "@types/node", "@nuxtjs/axios", "vue-sweetalert2"]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }

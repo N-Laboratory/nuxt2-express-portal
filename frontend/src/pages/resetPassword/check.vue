@@ -32,13 +32,16 @@ export default Vue.extend({
         .$post('/api/checkUser', this.user)
         .then((userId: number) => {
           if (userId === 0) {
-            console.log("NG");
+            this.$swal({
+              title: '入力エラー',
+              html: 'アカウントが存在しません。',
+              icon: 'error',
+            })
           } else {
             this.user.setId(userId)
             this.$store.commit('updateUser', this.user)
             // this.$router.push('confirm')
-            console.log("User", this.user);
-
+            console.log('User', this.user)
           }
         })
         .catch((error) => {
