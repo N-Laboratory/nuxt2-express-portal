@@ -31,4 +31,10 @@ export const Routes = [
     controller: UserController,
     action: 'checkUser',
   },
+  {
+    method: 'post',
+    route: '/existUser',
+    controller: UserController,
+    action: 'existUser',
+  },
 ]

@@ -43,4 +43,8 @@ export class UserController {
     }
     return "0"
   }
+  async existUser(request: Request) {
+    const user = await this.userRepository.findOne({ where: { name: request.body.name } })
+    return user ? true : false
+  }
 }

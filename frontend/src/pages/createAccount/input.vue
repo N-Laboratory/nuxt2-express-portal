@@ -14,6 +14,7 @@
 import Vue from 'vue'
 import RegisterAccountForm from '../../components/molecules/RegisterAccountForm.vue'
 import { User } from '../../model/User'
+import { $axios } from '../../utils/api'
 
 export type DataType = {
   user: User
@@ -26,13 +27,29 @@ export default Vue.extend({
     }
   },
   methods: {
-    goNext(): void {
-      this.$store.commit('updateUser', this.user)
-      try {
-        this.$router.push('confirm')
-      } catch (error: any) {
-        this.$nuxt.error(error)
-      }
+    async goNext() {
+      await $axios
+        .$post('/api/existUser', this.user)
+        .then((existUser: boolean) => {
+          if (existUser) {
+            this.$swal({
+              title: '入力エラー',
+              html: 'Nameが使用されています。',
+              icon: 'error',
+            })
+          } else {
+            this.$store.commit('updateUser', this.user)
+
+            try {
+              this.$router.push('confirm')
+            } catch (error: any) {
+              this.$nuxt.error(error)
+            }
+          }
+        })
+        .catch((error) => {
+          this.$nuxt.error(error)
+        })
     },
   },
 })
