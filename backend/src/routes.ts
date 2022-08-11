@@ -25,4 +25,10 @@ export const Routes = [
     controller: UserController,
     action: 'remove',
   },
+  {
+    method: 'post',
+    route: '/checkUser',
+    controller: UserController,
+    action: 'checkUser',
+  },
 ]

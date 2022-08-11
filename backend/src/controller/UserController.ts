@@ -2,7 +2,7 @@
 import { Request } from 'express'
 import { AppDataSource } from '../data-source'
 import { User } from '../entity/User'
-import { generate } from '../utils/HashGenerator'
+import { generate, generateBySalt } from '../utils/HashGenerator'
 
 export class UserController {
   private userRepository = AppDataSource.getRepository(User)
@@ -19,6 +19,11 @@ export class UserController {
     const hashData = generate(request.body.password)
     request.body.password = hashData[0]
     request.body.salt = hashData[1]
+
+    // 初期登録の場合
+    if (request.body.id === 0) {
+      delete request.body.id
+    }
     return this.userRepository.save(request.body)
   }
 
@@ -28,5 +33,14 @@ export class UserController {
     })
     await this.userRepository.remove(userToRemove)
     return 'OK'
+  }
+
+  async checkUser(request: Request) {
+    const user = await this.userRepository.findOne({ where: { name: request.body.name } })
+    if (user) {
+      const hashPassword = generateBySalt(request.body.password, user.salt)
+      return hashPassword === user.password ? user.id.toString() : "0"
+    }
+    return "0"
   }
 }

@@ -1,0 +1,50 @@
+<template>
+  <section class="hero is-fullheight is-dark">
+    <div class="hero-body">
+      <div class="container">
+        <div class="column is-half is-offset-3">
+          <check-account-form v-model="user" @click="goNext" />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+import CheckAccountForm from '../../components/molecules/CheckAccountForm.vue'
+import { User } from '../../model/User'
+import { $axios } from '../../utils/api'
+
+export type DataType = {
+  user: User
+}
+export default Vue.extend({
+  components: { CheckAccountForm },
+  data(): DataType {
+    return {
+      user: new User(0, '', ''),
+    }
+  },
+  methods: {
+    async goNext() {
+      await $axios
+        .$post('/api/checkUser', this.user)
+        .then((userId: number) => {
+          if (userId === 0) {
+            console.log("NG");
+          } else {
+            this.user.setId(userId)
+            this.$store.commit('updateUser', this.user)
+            // this.$router.push('confirm')
+            console.log("User", this.user);
+
+          }
+        })
+        .catch((error) => {
+          this.$nuxt.error(error)
+        })
+    },
+  },
+})
+</script>
