@@ -35,12 +35,11 @@ export default Vue.extend({
     async goNext() {
       await $axios
         .post('/api/users', this.user)
-        .then((res) => {
-          console.log(res)
+        .then(() => {
           this.$router.push('complete')
         })
-        .catch((err) => {
-          console.log('an error occurred.', err)
+        .catch((error) => {
+          this.$nuxt.error(error)
         })
     },
     goBack() {

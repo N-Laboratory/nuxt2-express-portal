@@ -3,7 +3,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="column is-half is-offset-3">
-          <register-accountForm v-model="user" @click="goNext" />
+          <register-account-form v-model="user" @click="goNext" />
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@ export default Vue.extend({
   components: { RegisterAccountForm },
   data(): DataType {
     return {
-      user: new User('', ''),
+      user: new User(0, '', ''),
     }
   },
   methods: {

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default () =>
   new Store({
     state: () => ({
-      user: new User('', ''),
+      user: new User(0, '', ''),
     }),
     mutations: {
       updateUser(state, payload) {

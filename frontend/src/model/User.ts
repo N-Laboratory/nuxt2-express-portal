@@ -1,25 +1,35 @@
 export class User {
+  id: number
   name: string
   password: string
 
-  constructor(name: string, password: string) {
+  constructor(id: number, name: string, password: string) {
+    this.id = id
     this.name = name
     this.password = password
   }
 
-  getName(): string {
+  getId() {
+    return this.id
+  }
+
+  getName() {
     return this.name
   }
 
-  getPassword(): string {
+  getPassword() {
     return this.password
   }
 
-  setName(name: string): void {
+  setId(id: number) {
+    this.id = id
+  }
+
+  setName(name: string) {
     this.name = name
   }
 
-  setPassword(password: string): void {
+  setPassword(password: string) {
     this.password = password
   }
 }

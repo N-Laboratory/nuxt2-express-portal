@@ -19,7 +19,7 @@
               <login-form v-model="user" @click="login" />
               <div class="columns">
                 <div class="column">
-                  <base-link class="has-text-link" path="/resetPassword/input"
+                  <base-link class="has-text-link" path="/resetPassword/check"
                     >Forgot Password?</base-link
                   >
                 </div>
@@ -52,10 +52,10 @@ export default Vue.extend({
     LoginForm,
     BaseLink,
   },
-  layout: "login",
+  layout: 'login',
   data(): DataType {
     return {
-      user: new User('', ''),
+      user: new User(0, '', ''),
     }
   },
   methods: {
