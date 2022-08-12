@@ -13,5 +13,10 @@ export default () =>
       updateUser(state, payload) {
         state.user = payload
       },
+      resetUser(state) {
+        state.user.setId(0)
+        state.user.setName('')
+        state.user.setPassword('')
+      },
     },
   })
