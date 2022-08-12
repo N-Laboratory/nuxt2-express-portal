@@ -11,6 +11,8 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="targetMenu"
+        :class="{'is-active': showMenu}"
+        @click="toggleMenu"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -18,14 +20,14 @@
       </a>
     </div>
 
-    <div id="targetMenu" class="navbar-menu">
+    <div id="targetMenu" class="navbar-menu" :class="{'is-active': showMenu}">
       <div class="navbar-start">
         <a class="navbar-item"> About </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link"> Test </a>
+          <a class="navbar-link" @click="toggleDropdown"> Test </a>
 
-          <div class="navbar-dropdown">
+          <div class="navbar-dropdown" :class="{'is-hidden': showDropdown}">
             <a class="navbar-item"> テスト1 </a>
             <a class="navbar-item"> テスト1 </a>
             <a class="navbar-item"> テスト1</a>
@@ -54,13 +56,33 @@
     </div>
   </nav>
 </template>
+
 <script lang="ts">
 import Vue from 'vue'
 import BaseLink from '../atoms/BaseLink.vue'
+
+export type DataType = {
+  showMenu: boolean,
+  showDropdown: boolean
+}
 export default Vue.extend({
   components: {
     BaseLink,
   },
+  data(): DataType {
+    return {
+      showMenu: false,
+      showDropdown: false
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+    },
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown
+    }
+  }
 })
 </script>
 
