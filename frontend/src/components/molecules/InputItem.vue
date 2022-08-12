@@ -4,10 +4,11 @@
     <div class="control">
       <validation-provider v-slot="{ errors }" :name="name" :rules="rules">
         <base-input
-          v-model="value"
-          :type="name"
+          :type="type"
           :name="name"
+          :value="value"
           :placeholder="name"
+          @input="sendValue"
         />
         <span class="has-text-danger has-text-weight-bold">{{
           errors[0]
@@ -33,15 +34,11 @@ export default Vue.extend({
     rules: { type: String, default: '' },
     type: { type: String, default: '' },
     name: { type: String, default: '' },
+    value: { type: String, default: '' },
     placeholder: { type: String, default: '' },
   },
-  data() {
-    return {
-      value: '',
-    }
-  },
-  watch: {
-    value(newValue: string): void {
+  methods: {
+    sendValue(newValue: string): void {
       this.$emit('input', newValue)
     },
   },

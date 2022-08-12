@@ -26,6 +26,12 @@ export default Vue.extend({
       user: new User(0, '', ''),
     }
   },
+  created() {
+    const storeUser: User = this.$store.state.user
+    if (storeUser && storeUser.name && storeUser.password) {
+      this.user = storeUser
+    }
+  },
   methods: {
     async goNext() {
       await $axios

@@ -7,6 +7,7 @@
         rules="required|alphaNum|max:64"
         type="name"
         name="name"
+        :value="value.getName()"
         placeholder="name"
         @input="sendName"
       />
@@ -14,7 +15,8 @@
         title="Old Password"
         rules="required|alphaNum|max:64"
         type="password"
-        name="password"
+        name="old password"
+        :value="value.getPassword()"
         placeholder="password"
         @input="sendPassword"
       />
