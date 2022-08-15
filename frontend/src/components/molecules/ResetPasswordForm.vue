@@ -10,7 +10,7 @@
       </div>
 
       <input-item
-        title="Password"
+        title="New Password"
         rules="required|alphaNum|max:64"
         type="password"
         name="password"
