@@ -6,8 +6,8 @@
           <div class="box">
             <complete-form
               :value="user"
-              title="アカウント登録完了"
-              msg="以下のユーザを作成しました"
+              title="パスワード変更完了"
+              msg="以下のユーザのパスワードを更新しました"
             />
           </div>
         </div>

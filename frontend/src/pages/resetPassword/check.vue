@@ -40,8 +40,7 @@ export default Vue.extend({
           } else {
             this.user.setId(userId)
             this.$store.commit('updateUser', this.user)
-            // this.$router.push('confirm')
-            console.log('User', this.user)
+            this.$router.push('input')
           }
         })
         .catch((error) => {

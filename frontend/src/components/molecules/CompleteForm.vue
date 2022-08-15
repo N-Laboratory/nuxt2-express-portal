@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="title has-text-black">アカウント登録完了</h1>
+    <h1 class="title has-text-black" v-text="title"></h1>
     <div class="field mb-4">
-      <label class="label is-size-5">以下のユーザを作成しました</label>
+      <label class="label is-size-5" v-text="msg"></label>
     </div>
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
@@ -34,6 +34,8 @@ import { User } from './../../model/User'
 export default Vue.extend({
   components: { BaseLink },
   props: {
+    title: { type: String, default: '' },
+    msg: { type: String, default: '' },
     value: User,
   },
 })

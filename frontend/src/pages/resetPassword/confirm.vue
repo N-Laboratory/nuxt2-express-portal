@@ -7,7 +7,7 @@
             <back-section class="mb-5" @click="goBack" />
             <confirm-account-form
               v-model="user"
-              title="アカウント確認"
+              title="パスワード確認"
               @click="goNext"
             />
           </div>
@@ -31,7 +31,6 @@ export default Vue.extend({
   components: { ConfirmAccountForm, BackSection },
   data(): DataType {
     return {
-      // 全画面で保存した入力情報を取得
       user: this.$store.state.user,
     }
   },
