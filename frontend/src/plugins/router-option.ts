@@ -8,7 +8,7 @@ interface pathList {
 }
 
 const createAccountInput: pathList = {
-  from: ['/', '/createAccount/confirm'],
+  from: ['/login', '/createAccount/confirm'],
   to: '/createAccount/input',
 }
 const createAccountConfirm: pathList = {
@@ -20,8 +20,20 @@ const createAccountComplete: pathList = {
   to: '/createAccount/complete',
 }
 const resetPasswordCheck: pathList = {
-  from: ['/'],
+  from: ['/login'],
   to: '/resetPassword/check',
+}
+const resetPasswordInput: pathList = {
+  from: ['/resetPassword/check', '/resetPassword/confirm'],
+  to: '/resetPassword/input',
+}
+const resetPasswordConfirm: pathList = {
+  from: ['/resetPassword/input'],
+  to: '/resetPassword/confirm',
+}
+const resetPasswordComplete: pathList = {
+  from: ['/resetPassword/confirm'],
+  to: '/resetPassword/complete',
 }
 
 export default (ctx: Context) => {

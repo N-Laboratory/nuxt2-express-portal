@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <base-link class="navbar-item" path="/">
+      <base-link class="navbar-item" path="/login">
         <font-awesome-icon class="fa-house" icon="fa-house" />
       </base-link>
 
@@ -41,13 +41,13 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <base-link class="button is-ghost" path="/">
+            <base-link class="button is-ghost" path="/login">
               <span class="icon is-small">
                 <i class="far fa-user"></i>
               </span>
               <span>Sign up</span>
             </base-link>
-            <base-link class="button is-link" path="/">
+            <base-link class="button is-link" path="/login">
               <span>Sign in</span>
             </base-link>
           </div>

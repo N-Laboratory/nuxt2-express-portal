@@ -20,7 +20,9 @@
 
     <div class="field mb-3">
       <div class="content article-body has-text-centered">
-        <base-link class="has-text-link" path="/">TOPページへ戻る</base-link>
+        <base-link class="has-text-link" path="/login"
+          >TOPページへ戻る</base-link
+        >
       </div>
     </div>
   </div>

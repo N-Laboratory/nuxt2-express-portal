@@ -19,4 +19,11 @@ export default () =>
         state.user.setPassword('')
       },
     },
+    actions: {
+      nuxtServerInit(vuexContext, context) {
+        if (context.req.url === '/') {
+          context.redirect('/login')
+        }
+      },
+    },
   })
