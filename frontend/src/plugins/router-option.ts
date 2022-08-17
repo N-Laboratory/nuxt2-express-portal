@@ -69,6 +69,13 @@ export default (ctx: Context) => {
           ctx.store.commit('resetUser')
         }
       }
+
+      if (
+        to.path === createAccountInput.to &&
+        !createAccountInput.from.includes(from.path)
+      ) {
+        ctx.redirect('/login')
+      }
       next()
     }
   )

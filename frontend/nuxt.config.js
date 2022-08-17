@@ -21,7 +21,7 @@ export default {
   plugins: [
     '@/plugins/axios-accessor',
     '@/plugins/vee-validate.ts',
-    { src: '@/plugins/router-option.ts', ssr: false },
+    // { src: '@/plugins/router-option.ts', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,6 +49,9 @@ export default {
   srcDir: 'src/',
   axios: {
     proxy: true,
+  },
+  router: {
+    middleware: ['router-option']
   },
   proxy: {
     // proxy http://localhost:3030/api/hoge to http://localhost:3000/hoge
