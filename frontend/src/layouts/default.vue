@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="sf-site-all">
     <header-menu />
-    <nuxt />
+    <nuxt class="sf-site-content" />
     <footer-menu />
   </div>
 </template>
@@ -18,3 +18,13 @@ export default Vue.extend({
   },
 })
 </script>
+<style>
+.sf-site-all {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.sf-site-content {
+  flex: 1;
+}
+</style>

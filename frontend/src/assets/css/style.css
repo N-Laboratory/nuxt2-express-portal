@@ -15,6 +15,10 @@ body {
   color: var(--textDark);
 }
 
+.hero.is-fullheight {
+  min-height: auto !important;
+}
+
 .text-break {
   word-break: break-word;
 }
