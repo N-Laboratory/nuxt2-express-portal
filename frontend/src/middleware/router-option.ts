@@ -1,4 +1,4 @@
-import { Store } from 'vuex';
+import { Store } from 'vuex'
 import { Route } from 'vue-router'
 import { User } from '../model/User'
 
@@ -37,20 +37,30 @@ const resetPasswordComplete: pathList = {
 }
 
 const prohibitAccessPathList = [
-  "/createAccount/confirm",
-  "/createAccount/complete",
-  "/resetPassword/input",
-  "/resetPassword/confirm",
-  "/resetPassword/complete",
-];
+  '/createAccount/confirm',
+  '/createAccount/complete',
+  '/resetPassword/input',
+  '/resetPassword/confirm',
+  '/resetPassword/complete',
+]
 
-export default function ({ store, from, route, redirect }: {store: Store<{user: User;}>, from: Route, route: Route, redirect: Function}) {
-  const isProhibitAccessPath = prohibitAccessPathList.includes(route.path);
+export default function ({
+  store,
+  from,
+  route,
+  redirect,
+}: {
+  store: Store<{ user: User }>
+  from: Route
+  route: Route
+  redirect: Function
+}) {
+  const isProhibitAccessPath = prohibitAccessPathList.includes(route.path)
 
-  if (from &&
-    (
-      // アカウント登録完了画面から任意の画面へ遷移
-      from.path === createAccountComplete.to ||
+  if (
+    from &&
+    // アカウント登録完了画面から任意の画面へ遷移
+    (from.path === createAccountComplete.to ||
       // アカウント確認画面からアカウント登録完了・アカウント登録画面以外へ遷移
       (from.path === createAccountConfirm.to &&
         route.path !== createAccountComplete.to &&
@@ -69,16 +79,15 @@ export default function ({ store, from, route, redirect }: {store: Store<{user: 
         route.path !== resetPasswordInput.to &&
         route.path !== resetPasswordComplete.to) ||
       // パスワード変更完了画面から任意の画面へ遷移
-      from.path === resetPasswordComplete.to
-    )
+      from.path === resetPasswordComplete.to)
   ) {
-      const storeUser: User = store.state.user
-      if (storeUser && storeUser.name !== '' && storeUser.password !== '') {
-        console.log('resetUserInfo')
-        // reset store userinfo
-        store.commit('resetUser')
-      }
+    const storeUser: User = store.state.user
+    if (storeUser && storeUser.name !== '' && storeUser.password !== '') {
+      console.log('resetUserInfo')
+      // reset store userinfo
+      store.commit('resetUser')
     }
+  }
 
   if ((!from || (from && from.path === route.path)) && isProhibitAccessPath) {
     redirect('/login')

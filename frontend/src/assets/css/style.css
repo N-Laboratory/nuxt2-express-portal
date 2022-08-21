@@ -5,9 +5,13 @@
   --textLight: hsla(0, 0%, 0%, 0.33);
 }
 
+html {
+  overflow-y: auto !important;
+}
+
 body {
   background: var(--background);
-  height: 100vh;
+  height: 100%;
   color: var(--textDark);
 }
 

@@ -1,7 +1,6 @@
 <template>
-  <section class="hero is-dark">
-    <div class="hero-body">
-      <div class="columns is-multiline">
+  <section class="container logi-page is-dark">
+      <div class="columns is-multiline mt-0">
         <div class="column is-8 is-offset-2 register">
           <div class="columns">
             <div class="column left">
@@ -32,7 +31,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </section>
 </template>
@@ -41,6 +39,7 @@
 import Vue from 'vue'
 import LoginForm from '../components/molecules/LoginForm.vue'
 import BaseLink from '../components/atoms/BaseLink.vue'
+import { $axios } from '../utils/api'
 import { User } from './../model/User'
 
 export type DataType = {
@@ -58,21 +57,36 @@ export default Vue.extend({
     }
   },
   methods: {
-    login(): void {
-      try {
-        console.log('Name:' + this.user.getName())
-        console.log('Password:' + this.user.getPassword())
-        console.log('do login')
-        this.$router.push('/')
-      } catch (error: any) {
-        this.$nuxt.error(error)
-      }
+    async login() {
+      await $axios
+        .$post('/api/login', this.user)
+        .then((login: boolean) => {
+          if (login) {
+            try {
+              this.$router.push('/myPage')
+            } catch (error: any) {
+              this.$nuxt.error(error)
+            }
+          } else {
+            this.$swal({
+              title: 'ログイン失敗',
+              html: 'アカウントまたはパスワードが違います。',
+              icon: 'error',
+            })
+          }
+        })
+        .catch((error) => {
+          this.$nuxt.error(error)
+        })
     },
   },
 })
 </script>
 
 <style>
+.container.logi-page {
+  height: 100vh;
+}
 .field:not(:last-child) {
   margin-bottom: 1rem;
 }
