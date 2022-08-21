@@ -22,7 +22,9 @@
 
     <div id="targetMenu" class="navbar-menu" :class="{ 'is-active': showMenu }">
       <div class="navbar-start">
-        <a class="navbar-item"> About </a>
+        <base-link class="navbar-item" path="/contents/about">
+          About
+        </base-link>
 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" @click="toggleDropdown"> Test </a>
