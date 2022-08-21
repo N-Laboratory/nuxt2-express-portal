@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="section">
-      <div class="section-heading has-text-white">
+      <div class="section-heading has-text-white mt-4 has-text-centered">
         <h3 class="title is-2 has-text-white">About Me</h3>
         <h4 class="subtitle is-5 has-text-white">
           IT Engineer, junior developer
@@ -23,7 +23,7 @@
         <div class="column left-item">
           <div class="card">
             <div class="card-content">
-              <h3 class="title is-4">Profile</h3>
+              <h3 class="title is-4 has-text-centered">Profile</h3>
 
               <div class="content">
                 <table class="table-profile">
@@ -32,15 +32,15 @@
                     <th colspan="2"></th>
                   </tr>
                   <tr>
-                    <td>Address:</td>
+                    <td class="has-text-weight-bold">Address:</td>
                     <td>N-Laboratory</td>
                   </tr>
                   <tr>
-                    <td>From:</td>
+                    <td class="has-text-weight-bold">From:</td>
                     <td>Japan</td>
                   </tr>
                   <tr>
-                    <td>Age:</td>
+                    <td class="has-text-weight-bold">Age:</td>
                     <td>Twenties</td>
                   </tr>
                 </table>
@@ -56,7 +56,7 @@
         <div class="column right-item">
           <div class="card">
             <div class="card-content skills-content">
-              <h3 class="title is-4">Skills</h3>
+              <h3 class="title is-4 has-text-centered">Skills</h3>
               <div class="content">
                 <article class="media">
                   <div class="media-content">
@@ -170,22 +170,15 @@ export default Vue.extend({})
   width: 80%;
   margin: 0 auto !important;
 }
+
 .has-same-height .card {
   height: 320px;
   overflow: hidden;
 }
 
-.card-content h3 {
-  text-align: center;
-}
-
 .table-profile td,
 th {
   border: none !important;
-}
-
-.table-profile td:first-of-type {
-  font-weight: bold;
 }
 
 .skills-content .media {
@@ -198,18 +191,7 @@ th {
   height: 4px !important;
 }
 
-.custom-tags {
-  text-align: center !important;
-  display: block;
-}
-
-.portfolio-container .card {
-  margin-bottom: 2em;
-}
-
 .section-heading {
-  text-align: center;
-  margin-top: 1em;
   margin-bottom: 6em;
 }
 </style>
