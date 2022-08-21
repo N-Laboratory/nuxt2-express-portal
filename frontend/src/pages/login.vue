@@ -1,36 +1,34 @@
 <template>
   <section class="container logi-page is-dark">
-      <div class="columns is-multiline mt-0">
-        <div class="column is-8 is-offset-2 register">
-          <div class="columns">
-            <div class="column left">
-              <h1 class="title has-text-black is-1">N-LAB</h1>
-              <h2 class="subtitle has-text-black colored is-4">
-                Learn IT-Tech.
-              </h2>
-              <p>This website is for Learn IT technology.</p>
-              <p>This website is for Learn IT technology.</p>
-              <p>This website is for Learn IT technology.</p>
-              <p>This website is for Learn IT technology.</p>
-            </div>
-            <div class="column right has-text-centered">
-              <h1 class="title has-text-black is-4">Sign In</h1>
-              <login-form v-model="user" @click="login" />
-              <div class="columns">
-                <div class="column">
-                  <base-link class="has-text-link" path="/resetPassword/check"
-                    >Forgot Password?</base-link
-                  >
-                </div>
-                <div class="column">
-                  <base-link class="has-text-link" path="/createAccount/input"
-                    >Create an Account</base-link
-                  >
-                </div>
+    <div class="columns is-multiline mt-0">
+      <div class="column is-8 is-offset-2 register">
+        <div class="columns">
+          <div class="column left">
+            <h1 class="title has-text-black is-1">N-LAB</h1>
+            <h2 class="subtitle has-text-black colored is-4">Learn IT-Tech.</h2>
+            <p>This website is for Learn IT technology.</p>
+            <p>This website is for Learn IT technology.</p>
+            <p>This website is for Learn IT technology.</p>
+            <p>This website is for Learn IT technology.</p>
+          </div>
+          <div class="column right has-text-centered">
+            <h1 class="title has-text-black is-4">Sign In</h1>
+            <login-form v-model="user" @click="login" />
+            <div class="columns">
+              <div class="column">
+                <base-link class="has-text-link" path="/resetPassword/check"
+                  >Forgot Password?</base-link
+                >
+              </div>
+              <div class="column">
+                <base-link class="has-text-link" path="/createAccount/input"
+                  >Create an Account</base-link
+                >
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </section>
 </template>
@@ -63,6 +61,7 @@ export default Vue.extend({
         .then((login: boolean) => {
           if (login) {
             try {
+              this.$store.commit('updateUser', this.user)
               this.$router.push('/myPage')
             } catch (error: any) {
               this.$nuxt.error(error)
