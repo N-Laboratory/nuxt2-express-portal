@@ -42,12 +42,12 @@ export default Vue.extend({
   data(): DataType {
     return {
       user: this.$store.state.user,
-      show: false
+      show: false,
     }
   },
   mounted() {
     this.show = true
-  }
+  },
 })
 </script>
 <style>
