@@ -1,7 +1,7 @@
 <template>
   <section class="hero is-fullheight">
     <div class="hero-body">
-      <div class="container">
+      <div v-if="show" class="container">
         <div class="column is-half is-offset-3">
           <div class="card">
             <div class="card-content">
@@ -36,13 +36,18 @@ import { User } from '~/src/model/User'
 
 export type DataType = {
   user: User
+  show: boolean
 }
 export default Vue.extend({
   data(): DataType {
     return {
       user: this.$store.state.user,
+      show: false
     }
   },
+  mounted() {
+    this.show = true
+  }
 })
 </script>
 <style>

@@ -68,7 +68,7 @@ export default Vue.extend({
             }
           } else {
             this.$swal({
-              title: 'ログイン失敗',
+              title: 'ログインエラー',
               html: 'アカウントまたはパスワードが違います。',
               icon: 'error',
             })
