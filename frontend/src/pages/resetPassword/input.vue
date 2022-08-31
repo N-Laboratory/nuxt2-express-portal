@@ -3,7 +3,12 @@
     <div class="hero-body">
       <div class="container">
         <div class="column is-half is-offset-3">
-          <reset-password-form v-model="user" @click="goNext" />
+          <reset-password-form
+            v-model="user"
+            active-step-num="2"
+            step-sum="4"
+            @click="goNext"
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <steps
+      class="mt-3 mb-5"
+      :active-step-num="activeStepNum"
+      :step-sum="stepSum"
+    />
     <h1 class="title has-text-black" v-text="title"></h1>
     <div class="field mb-4">
       <label class="label is-size-5" v-text="msg"></label>
@@ -32,13 +37,16 @@
 import Vue from 'vue'
 import BaseLink from '../atoms/BaseLink.vue'
 import { User } from './../../model/User'
+import Steps from './Steps.vue'
 
 export default Vue.extend({
-  components: { BaseLink },
+  components: { BaseLink, Steps },
   props: {
     title: { type: String, default: '' },
     msg: { type: String, default: '' },
     value: User,
+    activeStepNum: String,
+    stepSum: String,
   },
 })
 </script>

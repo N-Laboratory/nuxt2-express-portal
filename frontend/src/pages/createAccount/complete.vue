@@ -8,6 +8,8 @@
               :value="user"
               title="アカウント登録完了"
               msg="以下のユーザを作成しました"
+              active-step-num="3"
+              step-sum="3"
             />
           </div>
         </div>

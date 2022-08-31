@@ -3,7 +3,12 @@
     <div class="hero-body">
       <div class="container">
         <div class="column is-half is-offset-3">
-          <register-account-form v-model="user" @click="goNext" />
+          <register-account-form
+            v-model="user"
+            active-step-num="1"
+            step-sum="3"
+            @click="goNext"
+          />
         </div>
       </div>
     </div>

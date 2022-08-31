@@ -8,6 +8,8 @@
             <confirm-account-form
               v-model="user"
               title="パスワード確認"
+              active-step-num="3"
+              step-sum="4"
               @click="goNext"
             />
           </div>

@@ -8,6 +8,8 @@
               :value="user"
               title="パスワード変更完了"
               msg="以下のユーザのパスワードを更新しました"
+              active-step-num="4"
+              step-sum="4"
             />
           </div>
         </div>

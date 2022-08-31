@@ -78,7 +78,7 @@
                   <div class="media-content">
                     <div class="content">
                       <p>
-                        <strong>Vue:</strong>
+                        <strong>Vue/Nuxt:</strong>
                         <br />
                         <progress
                           class="progress is-primary"

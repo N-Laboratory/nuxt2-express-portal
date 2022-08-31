@@ -1,7 +1,12 @@
 <template>
   <validation-observer ref="observer" v-slot="{ invalid }">
     <div class="box">
-      <h1 class="title has-text-black">アカウント確認</h1>
+      <steps
+        class="mt-3 mb-5"
+        :active-step-num="activeStepNum"
+        :step-sum="stepSum"
+      />
+      <h1 class="title has-text-black">アカウント認証</h1>
       <input-item
         title="Name"
         rules="required|alphaNum|max:64"
@@ -36,11 +41,14 @@ import { ValidationObserver } from 'vee-validate'
 import BaseButton from '../atoms/BaseButton.vue'
 import InputItem from '../molecules/InputItem.vue'
 import { User } from './../../model/User'
+import Steps from './Steps.vue'
 
 export default Vue.extend({
-  components: { BaseButton, InputItem },
+  components: { BaseButton, InputItem, Steps },
   props: {
     value: User,
+    activeStepNum: String,
+    stepSum: String,
   },
   methods: {
     sendName(name: string): void {
