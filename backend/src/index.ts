@@ -3,12 +3,14 @@ import { AppDataSource } from './data-source'
 import { Routes } from './routes'
 import { generate } from './utils/HashGenerator'
 import { User } from './entity/User'
+import helmet from "helmet";
 
 AppDataSource.initialize()
   .then(async () => {
     // create express app
     const app = express()
     app.use(json())
+    app.use(helmet())
 
     // register express routes from defined application routes
     Routes.forEach((route) => {

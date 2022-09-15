@@ -6,6 +6,7 @@
   "dependencies": {
     "crypto-js": "^4.1.1",
     "express": "^4.17.2",
+    "helmet": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",

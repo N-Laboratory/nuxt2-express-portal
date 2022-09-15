@@ -42,7 +42,6 @@ export class LoginController {
     const bearer = bearToken.split(' ')
     const token = bearer[1]
 
-    console.log('called user')
     jwt.verify(token, 'secret', (err, user) => {
       if (!err) {
         return response.json({
