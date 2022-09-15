@@ -16,14 +16,14 @@
             <login-form v-model="user" @click="login" />
             <div class="columns">
               <div class="column">
-                <base-link class="has-text-link" path="/resetPassword/check"
-                  >Forgot Password?</base-link
-                >
+                <base-link class="has-text-link" path="/resetPassword/check">
+                  Forgot Password?
+                </base-link>
               </div>
               <div class="column">
-                <base-link class="has-text-link" path="/createAccount/input"
-                  >Create an Account</base-link
-                >
+                <base-link class="has-text-link" path="/createAccount/input">
+                  Create an Account
+                </base-link>
               </div>
             </div>
           </div>
@@ -56,27 +56,17 @@ export default Vue.extend({
   },
   methods: {
     async login() {
-      await $axios
-        .$post('/api/login', this.user)
-        .then((login: boolean) => {
-          if (login) {
-            try {
-              this.$store.commit('updateUser', this.user)
-              this.$router.push('/myPage')
-            } catch (error: any) {
-              this.$nuxt.error(error)
-            }
-          } else {
-            this.$swal({
-              title: 'ログインエラー',
-              html: 'アカウントまたはパスワードが違います。',
-              icon: 'error',
-            })
-          }
+      try {
+        await this.$auth.loginWith('local', {
+          data: this.user,
         })
-        .catch((error) => {
-          this.$nuxt.error(error)
+      } catch (error: any) {
+        this.$swal({
+          title: 'ログインエラー',
+          html: 'アカウントまたはパスワードが違います。',
+          icon: 'error',
         })
+      }
     },
   },
 })

@@ -14,7 +14,7 @@
                   </tr>
                   <tr>
                     <td class="has-text-weight-bold">Name:</td>
-                    <td v-text="user.getName()"></td>
+                    <td v-text="user.name"></td>
                   </tr>
                   <tr>
                     <td class="has-text-weight-bold">Password:</td>
@@ -41,7 +41,7 @@ export type DataType = {
 export default Vue.extend({
   data(): DataType {
     return {
-      user: this.$store.state.user,
+      user: this.$auth.user as User,
       show: false,
     }
   },

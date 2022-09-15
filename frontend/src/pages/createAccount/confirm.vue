@@ -30,6 +30,7 @@ export type DataType = {
   user: User
 }
 export default Vue.extend({
+  auth: false,
   components: { ConfirmAccountForm, BackSection },
   data(): DataType {
     return {

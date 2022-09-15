@@ -43,15 +43,22 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <base-link class="button is-ghost" path="/login">
-              <span class="icon is-small">
-                <i class="far fa-user"></i>
-              </span>
-              <span>Sign up</span>
-            </base-link>
-            <base-link class="button is-link" path="/login">
-              <span>Sign in</span>
-            </base-link>
+            <template v-if="$auth.loggedIn === true">
+              <a class="button is-link" @click="$auth.logout()">
+                <span>Sign out</span>
+              </a>
+            </template>
+            <template v-else>
+              <base-link class="button is-ghost" path="/login">
+                <span class="icon is-small">
+                  <i class="far fa-user"></i>
+                </span>
+                <span>Sign up</span>
+              </base-link>
+              <base-link class="button is-link" path="/login">
+                <span>Sign in</span>
+              </base-link>
+            </template>
           </div>
         </div>
       </div>

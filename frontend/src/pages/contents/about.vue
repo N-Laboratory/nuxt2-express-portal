@@ -148,7 +148,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+export default Vue.extend({
+  auth: false,
+})
 </script>
 <style>
 @media screen and (min-width: 768px) {

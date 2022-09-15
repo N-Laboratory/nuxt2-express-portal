@@ -24,6 +24,7 @@ export type DataType = {
   user: User
 }
 export default Vue.extend({
+  auth: false,
   components: { ResetPasswordForm },
   data(): DataType {
     return {

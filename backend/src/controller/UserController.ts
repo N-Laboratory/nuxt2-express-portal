@@ -36,24 +36,30 @@ export class UserController {
   }
 
   async checkUser(request: Request) {
-    const user = await this.userRepository.findOne({ where: { name: request.body.name } })
+    const user = await this.userRepository.findOne({
+      where: { name: request.body.name },
+    })
     if (user) {
       const hashPassword = generateBySalt(request.body.password, user.salt)
-      return hashPassword === user.password ? user.id.toString() : "0"
+      return hashPassword === user.password ? user.id.toString() : '0'
     }
-    return "0"
+    return '0'
   }
 
   async existUser(request: Request) {
-    const user = await this.userRepository.findOne({ where: { name: request.body.name } })
+    const user = await this.userRepository.findOne({
+      where: { name: request.body.name },
+    })
     return user ? true : false
   }
 
   async login(request: Request) {
-    const user = await this.userRepository.findOne({ where: { name: request.body.name } })
+    const user = await this.userRepository.findOne({
+      where: { name: request.body.name },
+    })
     if (user) {
       const hashPassword = generateBySalt(request.body.password, user.salt)
-      return hashPassword === user.password ? true : false;
+      return hashPassword === user.password ? true : false
     }
     return false
   }

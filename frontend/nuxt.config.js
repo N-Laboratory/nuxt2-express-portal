@@ -16,7 +16,6 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/style.css', 'bulma/css/bulma.css'],
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/axios-accessor',
@@ -33,7 +32,12 @@ export default {
     '@nuxt/typescript-build',
   ],
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', 'nuxt-fontawesome', 'vue-sweetalert2/nuxt'],
+  modules: [
+    '@nuxtjs/axios',
+    'nuxt-fontawesome',
+    'vue-sweetalert2/nuxt',
+    '@nuxtjs/auth',
+  ],
   fontawesome: {
     imports: [
       {
@@ -44,20 +48,49 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vee-validate/dist/rules'],
+    transpile: ['vee-validate/dist/rules', 'auth'],
   },
   srcDir: 'src/',
   axios: {
     proxy: true,
   },
   router: {
-    middleware: ['router-option'],
+    middleware: ['router-option', 'auth'],
   },
   proxy: {
     // proxy http://localhost:3030/api/hoge to http://localhost:3000/hoge
     '/api/': {
       target: 'http://localhost:3000',
       pathRewrite: { '^/api/': '/' },
+    },
+  },
+  auth: {
+    // TODO set http-only to cookie
+    // cookie: {
+    //   options: {
+    //     httpOnly: true
+    //   },
+    // },
+    localStorage: false,
+    redirect: {
+      home: '/myPage',
+      login: '/login',
+      logout: '/login',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/auth/login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          logout: false,
+          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' },
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      },
     },
   },
 }

@@ -25,6 +25,7 @@ export type DataType = {
   user: User
 }
 export default Vue.extend({
+  auth: false,
   components: { RegisterAccountForm },
   data(): DataType {
     return {

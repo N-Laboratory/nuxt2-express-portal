@@ -16,7 +16,13 @@
       "@/*": ["./*"]
     },
     "resolveJsonModule": true,
-    "types": ["@nuxt/types", "@types/node", "@nuxtjs/axios", "vue-sweetalert2"]
+    "types": [
+      "@nuxt/types",
+      "@types/node",
+      "@nuxtjs/axios",
+      "vue-sweetalert2",
+      "@types/nuxtjs__auth"
+    ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
