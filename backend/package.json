@@ -33,6 +33,6 @@
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
-    "serve": "nodemon -x \"npm start\" -w src/**/* -e ts,json"
+    "serve": "nodemon -x \"npm start\" -w src/ -e ts,json"
   }
 }
