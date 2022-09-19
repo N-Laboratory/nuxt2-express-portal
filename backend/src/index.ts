@@ -3,7 +3,7 @@ import { AppDataSource } from './data-source'
 import { Routes } from './routes'
 import { generate } from './utils/HashGenerator'
 import { User } from './entity/User'
-import helmet from "helmet";
+import helmet from 'helmet'
 
 AppDataSource.initialize()
   .then(async () => {

@@ -21,7 +21,8 @@
       "@types/node",
       "@nuxtjs/axios",
       "vue-sweetalert2",
-      "@types/nuxtjs__auth"
+      "@types/nuxtjs__auth",
+      "@types/jest"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]

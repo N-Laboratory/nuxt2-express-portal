@@ -37,16 +37,18 @@
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@types/jest": "^28.0.2",
     "@vue/test-utils": "^1.3.0",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^27.4.4",
+    "babel-jest": "^28.0.2",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
-    "jest": "^27.4.4",
+    "jest": "^28.0.2",
+    "jest-environment-jsdom": "^29.0.3",
     "prettier": "^2.5.1",
-    "ts-jest": "^27.1.1",
-    "vue-jest": "^3.0.4"
+    "ts-jest": "^28.0.0-next.2",
+    "vue-jest": "^3.0.7"
   }
 }
