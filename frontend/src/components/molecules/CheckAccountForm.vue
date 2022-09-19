@@ -16,15 +16,6 @@
         placeholder="name"
         @input="sendName"
       />
-      <input-item
-        title="Old Password"
-        rules="required|alphaNum|max:64"
-        type="password"
-        name="old password"
-        :value="value.getPassword()"
-        placeholder="password"
-        @input="sendPassword"
-      />
 
       <div class="field mb-3">
         <div class="control">
@@ -53,10 +44,6 @@ export default Vue.extend({
   methods: {
     sendName(name: string): void {
       this.value.setName(name)
-      this.$emit('input', this.value)
-    },
-    sendPassword(password: string): void {
-      this.value.setPassword(password)
       this.$emit('input', this.value)
     },
     goNext(): void {

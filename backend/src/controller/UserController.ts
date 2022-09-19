@@ -40,8 +40,7 @@ export class UserController {
       where: { name: request.body.name },
     })
     if (user) {
-      const hashPassword = generateBySalt(request.body.password, user.salt)
-      return hashPassword === user.password ? user.id.toString() : '0'
+      return user.id.toString()
     }
     return '0'
   }
