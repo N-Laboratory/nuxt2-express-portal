@@ -10,7 +10,7 @@
       <input-item
         title="Name"
         rules="required|alphaNum|max:64"
-        type="name"
+        type="text"
         name="name"
         :value="value.getName()"
         placeholder="name"
