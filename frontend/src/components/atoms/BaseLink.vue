@@ -7,7 +7,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    path: { type: String, default: '' },
+    path: { type: String, default: '/' },
   },
   methods: {
     goNext(): void {
