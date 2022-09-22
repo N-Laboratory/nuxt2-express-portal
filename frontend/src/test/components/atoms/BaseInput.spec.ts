@@ -12,7 +12,7 @@ afterEach(() => {
 })
 
 describe('インプットタグの属性値確認', () => {
-  test('親コンポーネントから値を受け取った場合', () => {
+  test('親コンポーネントから受け取った値が属性値に設定されていること', () => {
     wrapper = mount(BaseInput, {
       propsData: {
         name: 'textarea',
@@ -28,7 +28,7 @@ describe('インプットタグの属性値確認', () => {
     expect((wrapper.element as HTMLInputElement).value).toBe('Hello Jest!!')
   })
 
-  test('親コンポーネントから値を受け取らなかった場合', () => {
+  test('初期値が属性値に設定されていること', () => {
     expect(wrapper.attributes('name')).toBe('')
     expect(wrapper.attributes('placeholder')).toBe('')
     expect(wrapper.attributes('type')).toBe('')
@@ -36,7 +36,7 @@ describe('インプットタグの属性値確認', () => {
   })
 })
 
-test('インプットタグに値を入力した場合', () => {
+test('インプットタグに入力した値がemitされていること', () => {
   const inputElement = wrapper.find('input')
   inputElement.setValue('input value')
   inputElement.trigger('input')
