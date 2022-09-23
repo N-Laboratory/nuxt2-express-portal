@@ -40,7 +40,7 @@
           </validation-provider>
         </div>
       </div>
-      <base-submit text="Submit" :disabled="invalid" @click="login" />
+      <base-button text="Submit" :disabled="invalid" @click="login" />
       <br />
     </div>
   </validation-observer>
@@ -50,7 +50,7 @@
 import Vue from 'vue'
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 import BaseInput from '../atoms/BaseInput.vue'
-import BaseSubmit from '../atoms/BaseSubmit.vue'
+import BaseButton from '../atoms/BaseButton.vue'
 import { User } from './../../model/User'
 
 export type DataType = {
@@ -58,7 +58,7 @@ export type DataType = {
   password: string
 }
 export default Vue.extend({
-  components: { BaseInput, BaseSubmit, ValidationProvider },
+  components: { BaseInput, BaseButton, ValidationProvider },
   props: {
     value: User,
   },
