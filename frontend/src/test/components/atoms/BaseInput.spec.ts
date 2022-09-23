@@ -13,6 +13,7 @@ afterEach(() => {
 
 describe('インプットタグの属性値確認', () => {
   test('親コンポーネントから受け取った値が属性値に設定されていること', () => {
+    // Arrange
     wrapper = mount(BaseInput, {
       propsData: {
         name: 'textarea',
@@ -22,6 +23,7 @@ describe('インプットタグの属性値確認', () => {
       },
     })
 
+    // Assert
     expect(wrapper.attributes('name')).toBe('textarea')
     expect(wrapper.attributes('placeholder')).toBe('enter text')
     expect(wrapper.attributes('type')).toBe('textarea')
@@ -29,6 +31,7 @@ describe('インプットタグの属性値確認', () => {
   })
 
   test('初期値が属性値に設定されていること', () => {
+    // Assert
     expect(wrapper.attributes('name')).toBe('')
     expect(wrapper.attributes('placeholder')).toBe('')
     expect(wrapper.attributes('type')).toBe('')
@@ -37,8 +40,13 @@ describe('インプットタグの属性値確認', () => {
 })
 
 test('インプットタグに入力した値がemitされていること', () => {
+  // Arrange
   const inputElement = wrapper.find('input')
+
+  // Act
   inputElement.setValue('input value')
   inputElement.trigger('input')
+
+  // Assert
   expect(wrapper.emitted('input')![1]).toEqual(['input value'])
 })
