@@ -9,5 +9,5 @@ test('戻るを押下時にemitされること', () => {
   wrapper.vm.goBack()
 
   // Assert
-  expect(wrapper.emitted('click')).toEqual([[]])
+  expect(wrapper.emitted('click')).toBeTruthy()
 })
