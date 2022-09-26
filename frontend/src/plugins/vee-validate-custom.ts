@@ -1,9 +1,10 @@
 /**
- *入力値が半角数字がチェック
+ * 入力値が半角数字かどうかチェック
+ * 文字列中のスペースは許容
  */
 const alphaNum = {
   validate(value: string) {
-    if (value.match(/[^A-Za-z0-9]+/)) {
+    if (value.replace(/\s+/g, "").match(/[^A-Za-z0-9]+/)) {
       return false
     }
     return true
