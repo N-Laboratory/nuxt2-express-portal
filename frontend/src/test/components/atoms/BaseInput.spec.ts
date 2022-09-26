@@ -1,7 +1,7 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import BaseInput from '~/components/atoms/BaseInput.vue'
 
-let wrapper: Wrapper<any, Element>
+let wrapper: Wrapper<BaseInput, Element>
 
 beforeEach(() => {
   wrapper = mount(BaseInput)

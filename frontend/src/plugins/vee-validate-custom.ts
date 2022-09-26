@@ -4,7 +4,7 @@
  */
 const alphaNum = {
   validate(value: string) {
-    if (value.replace(/\s+/g, "").match(/[^A-Za-z0-9]+/)) {
+    if (value.replace(/\s+/g, '').match(/[^A-Za-z0-9]+/)) {
       return false
     }
     return true
