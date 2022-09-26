@@ -14,9 +14,13 @@ module.exports = {
   testMatch: ['**/?(*.)+(spec|test).+(ts|tsx|js)'],
   transform: {
     '^.+\\.ts$': 'ts-jest',
-    '^.+\\.js$': 'babel-jest',
+    '^.+\\.js$': 'ts-jest',
     '.*\\.(vue)$': 'vue-jest',
+    'vee-validate/dist/rules': 'ts-jest',
   },
+  transformIgnorePatterns: [
+    '<rootDir>/node_modules/(?!vee-validate/dist/rules)',
+  ],
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.vue',
