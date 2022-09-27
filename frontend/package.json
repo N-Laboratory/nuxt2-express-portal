@@ -2,6 +2,9 @@
   "name": "vue-portal",
   "version": "1.0.0",
   "private": true,
+  "config": {
+    "path": "./src/test/components/molecules/CheckAccountForm.spec.ts"
+  },
   "scripts": {
     "dev": "nuxt --port 3030",
     "build": "nuxt build",
@@ -11,7 +14,8 @@
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
-    "test": "jest"
+    "test": "jest %npm_package_config_path%",
+    "test:all": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
