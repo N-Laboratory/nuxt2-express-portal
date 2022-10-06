@@ -14,9 +14,10 @@
               name="name"
               placeholder="Name"
             />
-            <span class="validation-error has-text-danger has-text-weight-bold">{{
-              errors[0]
-            }}</span>
+            <span
+              class="validation-error has-text-danger has-text-weight-bold"
+              >{{ errors[0] }}</span
+            >
           </validation-provider>
         </div>
       </div>
@@ -34,9 +35,10 @@
               name="password"
               placeholder="Password"
             />
-            <span class="validation-error has-text-danger has-text-weight-bold">{{
-              errors[0]
-            }}</span>
+            <span
+              class="validation-error has-text-danger has-text-weight-bold"
+              >{{ errors[0] }}</span
+            >
           </validation-provider>
         </div>
       </div>

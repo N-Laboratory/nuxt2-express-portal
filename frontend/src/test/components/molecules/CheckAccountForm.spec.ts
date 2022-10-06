@@ -36,7 +36,7 @@ describe('プログレスバーの表示確認', () => {
     })
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
       'active'
     )
@@ -57,7 +57,7 @@ describe('プログレスバーの表示確認', () => {
     })
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
       'active'
     )
@@ -76,7 +76,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     inputElement.setValue('abcABC0123456789')
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.validation-error').text()).toBe('')
   })
 
@@ -88,7 +88,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     inputElement.setValue('')
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.validation-error').text()).toBe('nameは必須項目です')
   })
 
@@ -100,7 +100,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     inputElement.setValue('あいうえお漢字カナ')
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.validation-error').text()).toBe(
       'nameは半角英数字で入力してください'
     )
@@ -116,7 +116,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     )
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.validation-error').text()).toBe(
       'nameは64文字以内にしてください'
     )
@@ -132,7 +132,7 @@ test('インプットタグ入力時にemitされること', async () => {
   await waitPerfectly()
   inputElement.trigger('input')
 
-  // Asert
+  // Assert
   expect(wrapper.emitted('input')![1][0].name).toEqual('Hello Vue!!')
 })
 

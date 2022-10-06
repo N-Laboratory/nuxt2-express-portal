@@ -60,7 +60,7 @@ describe('プログレスバーの表示確認', () => {
     })
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
       'active'
     )
@@ -80,7 +80,7 @@ describe('プログレスバーの表示確認', () => {
     })
     await waitPerfectly()
 
-    // Asert
+    // Assert
     expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
       'active'
     )
@@ -105,6 +105,6 @@ test('TOPページへ戻る押下時にTOPページへ遷移すること', () =>
   // Act
   wrapper.find('.has-text-link').trigger('click')
 
-  // Asert
+  // Assert
   expect(router.push).toBeCalledWith('/login')
 })
