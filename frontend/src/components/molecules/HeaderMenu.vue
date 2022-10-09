@@ -50,9 +50,6 @@
             </template>
             <template v-else>
               <base-link class="button is-ghost" path="/login">
-                <span class="icon is-small">
-                  <i class="far fa-user"></i>
-                </span>
                 <span>Sign up</span>
               </base-link>
               <base-link class="button is-link" path="/login">
