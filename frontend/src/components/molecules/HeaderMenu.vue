@@ -29,7 +29,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" @click="toggleDropdown"> Test </a>
 
-          <div class="navbar-dropdown" :class="{ 'is-hidden': showDropdown }">
+          <div class="navbar-dropdown" :class="{ 'is-hidden': hideDropdown }">
             <a class="navbar-item"> テスト1 </a>
             <a class="navbar-item"> テスト1 </a>
             <a class="navbar-item"> テスト1</a>
@@ -72,7 +72,7 @@ import BaseLink from '../atoms/BaseLink.vue'
 
 export type DataType = {
   showMenu: boolean
-  showDropdown: boolean
+  hideDropdown: boolean
 }
 export default Vue.extend({
   components: {
@@ -81,7 +81,7 @@ export default Vue.extend({
   data(): DataType {
     return {
       showMenu: false,
-      showDropdown: false,
+      hideDropdown: true,
     }
   },
   methods: {
@@ -89,7 +89,7 @@ export default Vue.extend({
       this.showMenu = !this.showMenu
     },
     toggleDropdown() {
-      this.showDropdown = !this.showDropdown
+      this.hideDropdown = !this.hideDropdown
     },
   },
 })
