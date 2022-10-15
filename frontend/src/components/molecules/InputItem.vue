@@ -7,7 +7,7 @@
           :type="type"
           :name="name"
           :value="value"
-          :placeholder="name"
+          :placeholder="placeholder"
           @input="sendValue"
         />
         <span class="validation-error has-text-danger has-text-weight-bold">{{
@@ -31,8 +31,8 @@ export default Vue.extend({
   },
   props: {
     title: { type: String, default: '' },
-    rules: { type: String, default: '' },
-    type: { type: String, default: '' },
+    rules: { type: String, default: 'alphaNum' },
+    type: { type: String, default: 'text' },
     name: { type: String, default: '' },
     value: { type: String, default: '' },
     placeholder: { type: String, default: '' },
