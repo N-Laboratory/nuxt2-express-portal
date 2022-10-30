@@ -40,7 +40,7 @@ export default Vue.extend({
   methods: {
     async goNext() {
       await $axios
-        .post('/api/users', this.user)
+        .$post('/api/users', this.user)
         .then(() => {
           this.$router.push('complete')
         })
