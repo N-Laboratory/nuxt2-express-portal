@@ -34,7 +34,6 @@ export default Vue.extend({
   components: { ConfirmAccountForm, BackSection },
   data(): DataType {
     return {
-      // 全画面で保存した入力情報を取得
       user: this.$store.state.user,
     }
   },
@@ -43,7 +42,11 @@ export default Vue.extend({
       await $axios
         .$post('/api/users', this.user)
         .then(() => {
-          this.$router.push('complete')
+          try {
+            this.$router.push('complete')
+          } catch (error: any) {
+            this.$nuxt.error(error)
+          }
         })
         .catch((error) => {
           this.$nuxt.error(error)
