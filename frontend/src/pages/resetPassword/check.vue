@@ -46,7 +46,12 @@ export default Vue.extend({
           } else {
             this.user.setId(userId)
             this.$store.commit('updateUser', this.user)
-            this.$router.push('input')
+
+            try {
+              this.$router.push('input')
+            } catch (error: any) {
+              this.$nuxt.error(error)
+            }
           }
         })
         .catch((error) => {

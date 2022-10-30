@@ -42,7 +42,11 @@ export default Vue.extend({
       await $axios
         .$post('/api/users', this.user)
         .then(() => {
-          this.$router.push('complete')
+          try {
+            this.$router.push('complete')
+          } catch (error: any) {
+            this.$nuxt.error(error)
+          }
         })
         .catch((error) => {
           this.$nuxt.error(error)
