@@ -3,6 +3,7 @@ import { waitPerfectly } from '../../setup'
 import { User } from './../../../model/User'
 import ConfirmAccountForm from '~/components/molecules/ConfirmAccountForm.vue'
 let wrapper: Wrapper<ConfirmAccountForm, Element>
+jest.useFakeTimers()
 
 beforeEach(() => {
   wrapper = mount(ConfirmAccountForm, {

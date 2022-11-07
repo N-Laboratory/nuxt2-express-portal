@@ -50,8 +50,7 @@ export default Vue.extend({
   },
   methods: {
     sendPassword(password: string): void {
-      this.value.setPassword(password)
-      this.$emit('input', this.value)
+      this.$emit('input', password)
     },
     goNext(): void {
       ;(this.$refs.observer as InstanceType<typeof ValidationObserver>).reset()

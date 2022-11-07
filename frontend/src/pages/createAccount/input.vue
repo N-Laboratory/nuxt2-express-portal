@@ -35,7 +35,8 @@ export default Vue.extend({
   created() {
     const storeUser: User = this.$store.state.user
     if (storeUser && storeUser.name && storeUser.password) {
-      this.user = storeUser
+      this.user.name = storeUser.name
+      this.user.password = storeUser.password
     }
   },
   methods: {

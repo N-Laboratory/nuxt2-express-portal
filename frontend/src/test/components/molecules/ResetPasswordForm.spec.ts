@@ -84,13 +84,9 @@ describe('inputタグに値を入力した際の動作確認', () => {
     // Act
     inputElement.setValue('Hello Vue!!')
     await waitPerfectly()
-    inputElement.trigger('input')
 
     // Assert
-    expect(wrapper.vm.value.password).toBe('Hello Vue!!')
-    expect(wrapper.emitted('input')![0][0].id).toEqual(0)
-    expect(wrapper.emitted('input')![0][0].name).toEqual('Test Name')
-    expect(wrapper.emitted('input')![0][0].password).toEqual('Hello Vue!!')
+    expect(wrapper.emitted('input')![0][0]).toEqual('Hello Vue!!')
   })
 })
 
@@ -101,6 +97,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
 
     // Act
     inputElement.setValue('')
+    wrapper.props().value.password = ''
     await waitPerfectly()
 
     // Assert
@@ -115,6 +112,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
 
     // Act
     inputElement.setValue('あいうえお漢字カナ')
+    wrapper.props().value.password = 'あいうえお漢字カナ'
     await waitPerfectly()
 
     // Assert
@@ -131,6 +129,8 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     inputElement.setValue(
       'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     )
+    wrapper.props().value.password =
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     await waitPerfectly()
 
     // Assert
@@ -155,6 +155,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
 
     // Act
     wrapper.find('input[name="password"]').setValue('abcABC0123456789')
+    wrapper.props().value.password = 'abcABC0123456789'
     await waitPerfectly()
     const submitConditionAfterInput = (
       wrapper.find('.button').element as HTMLInputElement
@@ -178,6 +179,7 @@ describe('次へ押下時の動作確認', () => {
   test('次へ押下時にバリデーションがリセットされること', async () => {
     // Arrange
     wrapper.find('input[name="password"]').setValue('テスト')
+    wrapper.props().value.password = 'テスト'
     await waitPerfectly()
     const msgBeforeClick = wrapper.find('.validation-error').text()
 
