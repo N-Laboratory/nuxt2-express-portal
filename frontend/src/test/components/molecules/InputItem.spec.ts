@@ -57,20 +57,33 @@ describe('画面項目表示確認', () => {
 
 describe('インプットタグ入力時のvee-validate動作確認', () => {
   test.each([
-    ["半角英数字", "されない", "abcABC0123456789", ""],
-    ["半角英数字以外", "される", "あいうえお漢字カナ", "nameは半角英数字で入力してください"],
-    ["64文字以上", "される", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "nameは64文字以内にしてください"],
-    ["未入力", "される", "", "nameは必須項目です"],
-  ])("入力値が[%s]の場合にエラーメッセージが表示%sこと", async(inputType, result, inputValue, expectedErrorMsg) => {
-    // Arrange
-    wrapper.setProps({value: inputValue })
-    await waitPerfectly()
+    ['半角英数字', 'されない', 'abcABC0123456789', ''],
+    [
+      '半角英数字以外',
+      'される',
+      'あいうえお漢字カナ',
+      'nameは半角英数字で入力してください',
+    ],
+    [
+      '64文字以上',
+      'される',
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'nameは64文字以内にしてください',
+    ],
+    ['未入力', 'される', '', 'nameは必須項目です'],
+  ])(
+    '入力値が[%s]の場合にエラーメッセージが表示%sこと',
+    async (inputType, result, inputValue, expectedErrorMsg) => {
+      // Arrange
+      wrapper.setProps({ value: inputValue })
+      await waitPerfectly()
 
-    // Act
-    wrapper.find('input[name="name"]').trigger('input')
-    await waitPerfectly()
+      // Act
+      wrapper.find('input[name="name"]').trigger('input')
+      await waitPerfectly()
 
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
-  });
+      // Assert
+      expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
+    }
+  )
 })

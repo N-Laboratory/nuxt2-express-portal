@@ -1,8 +1,8 @@
 import Vuex, { Store } from 'vuex'
 import { createLocalVue } from '@vue/test-utils'
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash'
 import { User } from '../../model/User'
-import * as storeIndex from '../../store/index';
+import * as storeIndex from '../../store/index'
 
 const initialUser = new User(0, '', '')
 const updateUser = new User(1, 'Test Name', 'Test Password')
@@ -10,12 +10,12 @@ const updateUser = new User(1, 'Test Name', 'Test Password')
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-let store: Store<{user: User;}>
+let store: Store<{ user: User }>
 beforeEach(() => {
   store = new Store(cloneDeep(storeIndex as any))
 })
 
-test("storeのユーザー情報が初期化されていること", () => {
+test('storeのユーザー情報が初期化されていること', () => {
   // Assert
   expect(store.state.user).toEqual(initialUser)
 })
@@ -82,7 +82,10 @@ describe('actionsの動作確認', () => {
       // Arrange
 
       // Act
-      store.dispatch('nuxtServerInit', { redirect: redirectMock, req: { url: "/"} })
+      store.dispatch('nuxtServerInit', {
+        redirect: redirectMock,
+        req: { url: '/' },
+      })
 
       // Assert
       expect(redirectMock).toBeCalledWith('/login')
@@ -92,7 +95,10 @@ describe('actionsの動作確認', () => {
       // Arrange
 
       // Act
-      store.dispatch('nuxtServerInit', { redirect: redirectMock, req: { url: "/login"} })
+      store.dispatch('nuxtServerInit', {
+        redirect: redirectMock,
+        req: { url: '/login' },
+      })
 
       // Assert
       expect(redirectMock).not.toBeCalledWith('/login')
