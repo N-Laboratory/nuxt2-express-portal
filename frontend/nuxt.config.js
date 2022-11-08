@@ -64,6 +64,7 @@ export default {
       pathRewrite: { '^/api/': '/' },
     },
   },
+  loading: false,
   auth: {
     // TODO set http-only to cookie
     // cookie: {
