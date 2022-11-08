@@ -20,7 +20,7 @@ export default Vue.extend({
     placeholder: { type: String, default: '' },
   },
   methods: {
-    sendValue(event: { target: HTMLButtonElement }): void {
+    sendValue(event: { target: HTMLInputElement }): void {
       this.$emit('input', event.target.value.trim())
     },
   },
