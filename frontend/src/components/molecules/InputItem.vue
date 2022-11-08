@@ -2,7 +2,7 @@
   <div class="field mb-4">
     <label class="label is-size-5" v-text="title"></label>
     <div class="control">
-      <validation-provider v-slot="{ errors }" :name="name" :rules="rules">
+      <validation-provider v-slot="{ errors }" ref="provider" :name="name" :rules="rules">
         <base-input
           :type="type"
           :name="name"
@@ -22,9 +22,6 @@
 import Vue from 'vue'
 import BaseInput from '../atoms/BaseInput.vue'
 
-export type DataType = {
-  value: string
-}
 export default Vue.extend({
   components: {
     BaseInput,
