@@ -51,7 +51,11 @@ export default Vue.extend({
   layout: 'login',
   data(): DataType {
     return {
-      user: new User(0, '', ''),
+      user: {
+        id: 0,
+        name: '',
+        password: '',
+      },
     }
   },
   methods: {

@@ -40,7 +40,11 @@ beforeEach(() => {
 
   store = new Store({
     state: {
-      user: new User(0, 'Test Name', 'Test Password'),
+      user: {
+        id: 0,
+        name: 'Test Name',
+        password: 'Test Password',
+      },
     },
     mutations,
   })
@@ -50,7 +54,11 @@ describe('storeのユーザ情報削除確認', () => {
   test('storeにnameとpasswordが設定されていない場合はstoreの情報が削除されないこと', () => {
     // Arrange
     from.path = '/createAccount/complete'
-    store.state.user = new User(0, '', '')
+    store.state.user = {
+      id: 0,
+      name: '',
+      password: '',
+    }
 
     // Act
     RouterOption({ store, from, route, redirect })

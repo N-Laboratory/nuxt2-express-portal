@@ -11,7 +11,11 @@ importValidationRules()
 beforeEach(() => {
   wrapper = mount(CheckAccountForm, {
     propsData: {
-      value: new User(0, '', ''),
+      value: {
+        id: 0,
+        name: '',
+        password: '',
+      },
       activeStepNum: '1',
       stepSum: '4',
     },
@@ -28,7 +32,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(CheckAccountForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '2',
         stepSum: '4',
       },
@@ -49,7 +57,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(CheckAccountForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '3',
         stepSum: '3',
       },
@@ -68,59 +80,36 @@ describe('プログレスバーの表示確認', () => {
 })
 
 describe('インプットタグ入力時のvee-validate動作確認', () => {
-  test('半角英数字を入力した場合にエラーメッセージが表示されないこと', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input')
+  test.each([
+    ['半角英数字', 'されない', 'abcABC0123456789', ''],
+    [
+      '半角英数字以外',
+      'される',
+      'あいうえお漢字カナ',
+      'nameは半角英数字で入力してください',
+    ],
+    [
+      '64文字以上',
+      'される',
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'nameは64文字以内にしてください',
+    ],
+    ['未入力', 'される', '', 'nameは必須項目です'],
+  ])(
+    '入力値が[%s]の場合にエラーメッセージが表示%sこと',
+    async (inputType, result, inputValue, expectedErrorMsg) => {
+      // Arrange
+      wrapper.setProps({ value: { name: inputValue } })
+      await waitPerfectly()
 
-    // Act
-    inputElement.setValue('abcABC0123456789')
-    await waitPerfectly()
+      // Act
+      wrapper.find('input[name="name"]').trigger('input')
+      await waitPerfectly()
 
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe('')
-  })
-
-  test('未入力の場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input')
-
-    // Act
-    inputElement.setValue('')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe('nameは必須項目です')
-  })
-
-  test('半角英数字以外を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input')
-
-    // Act
-    inputElement.setValue('あいうえお漢字カナ')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe(
-      'nameは半角英数字で入力してください'
-    )
-  })
-
-  test('64文字以上を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input')
-
-    // Act
-    inputElement.setValue(
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    )
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe(
-      'nameは64文字以内にしてください'
-    )
-  })
+      // Assert
+      expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
+    }
+  )
 })
 
 test('インプットタグ入力時にemitされること', async () => {
@@ -147,7 +136,8 @@ describe('次へ押下時の動作確認', () => {
 
   test('次へ押下時にバリデーションがリセットされること', async () => {
     // Arrange
-    wrapper.find('input').setValue('テスト')
+    wrapper.setProps({ value: { name: 'テスト' } })
+    wrapper.find('input[name="name"]').trigger('input')
     await waitPerfectly()
     const beforeMsg = wrapper.find('.validation-error').text()
 

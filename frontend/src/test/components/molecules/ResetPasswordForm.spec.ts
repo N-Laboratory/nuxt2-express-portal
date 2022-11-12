@@ -11,7 +11,11 @@ importValidationRules()
 beforeEach(() => {
   wrapper = mount(ResetPasswordForm, {
     propsData: {
-      value: new User(0, 'Test Name', 'Test Password'),
+      value: {
+        id: 0,
+        name: 'Test Name',
+        password: 'Test Password',
+      },
     },
     localVue,
   })
@@ -37,7 +41,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(ResetPasswordForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '2',
         stepSum: '4',
       },
@@ -58,7 +66,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(ResetPasswordForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '3',
         stepSum: '3',
       },
@@ -91,59 +103,46 @@ describe('inputタグに値を入力した際の動作確認', () => {
 })
 
 describe('インプットタグ入力時のvee-validate動作確認', () => {
-  test('inputタグに未入力の場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
+  test.each([
+    ['半角英数字', 'されない', 'abcABC0123456789', ''],
+    [
+      '半角英数字以外',
+      'される',
+      'あいうえお漢字カナ',
+      'passwordは半角英数字で入力してください',
+    ],
+    [
+      '64文字以上',
+      'される',
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'passwordは64文字以内にしてください',
+    ],
+    ['未入力', 'される', '', 'passwordは必須項目です'],
+  ])(
+    '入力値が[%s]の場合にエラーメッセージが表示%sこと',
+    async (inputType, result, inputValue, expectedErrorMsg) => {
+      // Arrange
+      const inputElement = wrapper.find('input[name="password"]')
 
-    // Act
-    inputElement.setValue('')
-    wrapper.props().value.password = ''
-    await waitPerfectly()
+      // Act
+      inputElement.setValue(inputValue)
+      wrapper.props().value.password = inputValue
+      await waitPerfectly()
 
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe(
-      'passwordは必須項目です'
-    )
-  })
-
-  test('inputタグに半角英数字以外を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
-
-    // Act
-    inputElement.setValue('あいうえお漢字カナ')
-    wrapper.props().value.password = 'あいうえお漢字カナ'
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe(
-      'passwordは半角英数字で入力してください'
-    )
-  })
-
-  test('inputタグに64文字以上を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
-
-    // Act
-    inputElement.setValue(
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    )
-    wrapper.props().value.password =
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error').text()).toBe(
-      'passwordは64文字以内にしてください'
-    )
-  })
+      // Assert
+      expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
+    }
+  )
 
   test('passwordを入力した場合に次へボタンが活性になること', async () => {
     // Arrange
     wrapper = mount(ResetPasswordForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
       },
       localVue,
     })

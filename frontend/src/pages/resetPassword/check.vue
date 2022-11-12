@@ -29,7 +29,11 @@ export default Vue.extend({
   components: { CheckAccountForm },
   data(): DataType {
     return {
-      user: new User(0, '', ''),
+      user: {
+        id: 0,
+        name: '',
+        password: '',
+      },
     }
   },
   methods: {
@@ -44,7 +48,7 @@ export default Vue.extend({
               icon: 'error',
             })
           } else {
-            this.user.setId(userId)
+            this.user.id = userId
             this.$store.commit('updateUser', this.user)
 
             try {

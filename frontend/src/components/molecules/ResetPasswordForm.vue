@@ -10,7 +10,7 @@
       <div class="field mb-4">
         <label class="label is-size-5">Name</label>
         <div class="control">
-          <span class="is-size-5 text-break" v-text="value.getName()"></span>
+          <span class="is-size-5 text-break" v-text="value.name"></span>
         </div>
       </div>
 
@@ -19,7 +19,7 @@
         rules="required|alphaNum|max:64"
         type="password"
         name="password"
-        :value="value.getPassword()"
+        :value="value.password"
         placeholder="password"
         @input="sendPassword"
       />
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
 import { ValidationObserver } from 'vee-validate'
 import BaseButton from '../atoms/BaseButton.vue'
 import InputItem from '../molecules/InputItem.vue'
@@ -44,7 +44,7 @@ import Steps from './Steps.vue'
 export default Vue.extend({
   components: { BaseButton, InputItem, Steps },
   props: {
-    value: User,
+    value: Object as PropOptions<User>,
     activeStepNum: String,
     stepSum: String,
   },

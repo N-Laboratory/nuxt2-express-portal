@@ -23,7 +23,11 @@ let store: Store<{ user: User }>
 beforeEach(async () => {
   store = new Store({
     state: {
-      user: new User(0, '', ''),
+      user: {
+        id: 0,
+        name: '',
+        password: '',
+      },
     },
     mutations,
   })
@@ -58,7 +62,11 @@ describe('ユーザー情報の確認', () => {
     // Arrange
     store = new Store({
       state: {
-        user: new User(0, 'Test name', 'Test password'),
+        user: {
+          id: 0,
+          name: 'Test name',
+          password: 'Test password',
+        },
       },
       mutations,
     })

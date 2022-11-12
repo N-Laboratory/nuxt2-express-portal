@@ -17,7 +17,11 @@ describe('テキスト表示確認', () => {
       propsData: {
         title: 'こんにちは',
         msg: 'Hello',
-        value: new User(0, '日本太郎', 'password'),
+        value: {
+          id: 0,
+          name: '日本太郎',
+          password: 'password',
+        },
         activeStepNum: '1',
         stepSum: '3',
       },
@@ -34,7 +38,11 @@ describe('テキスト表示確認', () => {
     // Arrange
     wrapper = mount(CompleteForm, {
       propsData: {
-        value: new User(0, '日本花子', 'admin'),
+        value: {
+          id: 0,
+          name: '日本花子',
+          password: 'admin',
+        },
         activeStepNum: '1',
         stepSum: '3',
       },
@@ -53,7 +61,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(CompleteForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '2',
         stepSum: '4',
       },
@@ -73,7 +85,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(CompleteForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '3',
         stepSum: '3',
       },
@@ -95,7 +111,11 @@ test('TOPページへ戻る押下時にTOPページへ遷移すること', () =>
   const router = { push: jest.fn() }
   wrapper = mount(CompleteForm, {
     propsData: {
-      value: new User(0, '', ''),
+      value: {
+        id: 0,
+        name: '',
+        password: '',
+      },
       activeStepNum: '3',
       stepSum: '3',
     },

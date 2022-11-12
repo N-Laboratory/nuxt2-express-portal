@@ -11,7 +11,11 @@ test('ユーザー情報がStoreに保存されている情報で設定されて
   // Arrange
   const store = new Store({
     state: {
-      user: new User(0, 'Test Name', 'Test Password'),
+      user: {
+        id: 0,
+        name: 'Test Name',
+        password: 'Test Password',
+      },
     },
   })
   const wrapper = shallowMount(Complete, {

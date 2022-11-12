@@ -8,7 +8,11 @@ jest.useFakeTimers()
 beforeEach(() => {
   wrapper = mount(ConfirmAccountForm, {
     propsData: {
-      value: new User(0, 'name', 'password'),
+      value: {
+        id: 0,
+        name: 'name',
+        password: 'password',
+      },
       title: 'Test Title',
     },
   })
@@ -34,7 +38,11 @@ describe('タイトルの表示確認', () => {
     // Arrange
     wrapper = mount(ConfirmAccountForm, {
       propsData: {
-        value: new User(0, 'name', 'password'),
+        value: {
+          id: 0,
+          name: 'name',
+          password: 'password',
+        },
       },
     })
 
@@ -48,7 +56,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(ConfirmAccountForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '2',
         stepSum: '4',
       },
@@ -68,7 +80,11 @@ describe('プログレスバーの表示確認', () => {
     // Arrange
     wrapper = mount(ConfirmAccountForm, {
       propsData: {
-        value: new User(0, '', ''),
+        value: {
+          id: 0,
+          name: '',
+          password: '',
+        },
         activeStepNum: '3',
         stepSum: '3',
       },

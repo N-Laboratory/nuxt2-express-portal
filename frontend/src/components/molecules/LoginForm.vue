@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 import BaseInput from '../atoms/BaseInput.vue'
 import BaseButton from '../atoms/BaseButton.vue'
@@ -62,7 +62,7 @@ export type DataType = {
 export default Vue.extend({
   components: { BaseInput, BaseButton, ValidationProvider },
   props: {
-    value: User,
+    value: Object as PropOptions<User>,
   },
   data(): DataType {
     return {
@@ -72,12 +72,10 @@ export default Vue.extend({
   },
   watch: {
     name(newValue): void {
-      this.value.setName(newValue)
-      this.$emit('input', this.value)
+      this.$emit('input', { ...this.value, name: newValue } as User)
     },
     password(newValue): void {
-      this.value.setPassword(newValue)
-      this.$emit('input', this.value)
+      this.$emit('input', { ...this.value, password: newValue } as User)
     },
   },
   methods: {

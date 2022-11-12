@@ -29,7 +29,11 @@ export default Vue.extend({
   components: { RegisterAccountForm },
   data(): DataType {
     return {
-      user: new User(0, '', ''),
+      user: {
+        id: 0,
+        name: '',
+        password: '',
+      },
     }
   },
   created() {

@@ -19,7 +19,11 @@ let store: Store<{ user: User }>
 beforeEach(async () => {
   store = new Store({
     state: {
-      user: new User(0, 'Test Name', 'Test Password'),
+      user: {
+        id: 0,
+        name: 'Test Name',
+        password: 'Test Password',
+      },
     },
   })
   wrapper = shallowMount(Confirm, {

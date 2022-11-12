@@ -4,8 +4,16 @@ import { cloneDeep } from 'lodash'
 import { User } from '../../model/User'
 import * as storeIndex from '../../store/index'
 
-const initialUser = new User(0, '', '')
-const updateUser = new User(1, 'Test Name', 'Test Password')
+const initialUser = {
+  id: 0,
+  name: '',
+  password: '',
+}
+const updateUser = {
+  id: 1,
+  name: 'Test Name',
+  password: 'Test Password',
+}
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

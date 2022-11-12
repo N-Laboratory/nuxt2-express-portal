@@ -9,14 +9,14 @@
     <div class="field mb-4">
       <label class="label is-size-5">Name</label>
       <div class="control">
-        <span class="is-size-5 text-break" v-text="value.getName()"></span>
+        <span class="is-size-5 text-break" v-text="value.name"></span>
       </div>
     </div>
 
     <div class="field mb-5">
       <label class="label is-size-5">Password</label>
       <div class="control">
-        <span class="is-size-5 text-break" v-text="value.getPassword()"></span>
+        <span class="is-size-5 text-break" v-text="value.password"></span>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
 import { User } from '../../model/User'
 import BaseButton from '../atoms/BaseButton.vue'
 import Steps from './Steps.vue'
@@ -41,7 +41,7 @@ export default Vue.extend({
   },
   props: {
     title: { type: String, default: '' },
-    value: User,
+    value: Object as PropOptions<User>,
     activeStepNum: String,
     stepSum: String,
   },

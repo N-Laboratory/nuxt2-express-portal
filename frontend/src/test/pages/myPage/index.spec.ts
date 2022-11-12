@@ -9,7 +9,11 @@ beforeEach(() => {
   wrapper = mount(Index, {
     mocks: {
       $auth: {
-        user: new User(0, 'Test Name', 'Test Password'),
+        user: {
+          id: 0,
+          name: 'Test Name',
+          password: 'Test Password',
+        },
       },
     },
   })

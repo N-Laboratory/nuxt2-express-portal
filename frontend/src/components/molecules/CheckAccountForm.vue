@@ -12,7 +12,7 @@
         rules="required|alphaNum|max:64"
         type="text"
         name="name"
-        :value="value.getName()"
+        :value="value.name"
         placeholder="name"
         @input="sendName"
       />
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
 import { ValidationObserver } from 'vee-validate'
 import BaseButton from '../atoms/BaseButton.vue'
 import InputItem from '../molecules/InputItem.vue'
@@ -37,14 +37,13 @@ import Steps from './Steps.vue'
 export default Vue.extend({
   components: { BaseButton, InputItem, Steps },
   props: {
-    value: User,
+    value: Object as PropOptions<User>,
     activeStepNum: String,
     stepSum: String,
   },
   methods: {
     sendName(name: string): void {
-      this.value.setName(name)
-      this.$emit('input', this.value)
+      this.$emit('input', { ...this.value, name } as User)
     },
     goNext(): void {
       ;(this.$refs.observer as InstanceType<typeof ValidationObserver>).reset()

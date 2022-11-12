@@ -11,7 +11,11 @@ importValidationRules()
 beforeEach(() => {
   wrapper = mount(LoginForm, {
     propsData: {
-      value: new User(0, 'Test Name', 'Test Password'),
+      value: {
+        id: 0,
+        name: 'Test Name',
+        password: 'Test Password',
+      },
     },
     localVue,
   })
@@ -64,117 +68,66 @@ describe('inputタグに値を入力した際の動作確認', () => {
 })
 
 describe('インプットタグ入力時のvee-validate動作確認', () => {
-  test('name=nameのinputタグに半角英数字を入力した場合にエラーメッセージが表示されないこと', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="name"]')
+  test.each([
+    ['name', '半角英数字', 'されない', 'abcABC0123456789', '', 0],
+    [
+      'name',
+      '半角英数字以外',
+      'される',
+      'あいうえお漢字カナ',
+      'nameは半角英数字で入力してください',
+      0,
+    ],
+    [
+      'name',
+      '64文字以上',
+      'される',
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'nameは64文字以内にしてください',
+      0,
+    ],
+    ['name', '未入力', 'される', '', 'nameは必須項目です', 0],
+    ['password', '半角英数字', 'されない', 'abcABC0123456789', '', 1],
+    [
+      'password',
+      '半角英数字以外',
+      'される',
+      'あいうえお漢字カナ',
+      'passwordは半角英数字で入力してください',
+      1,
+    ],
+    [
+      'password',
+      '64文字以上',
+      'される',
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'passwordは64文字以内にしてください',
+      1,
+    ],
+    ['password', '未入力', 'される', '', 'passwordは必須項目です', 1],
+  ])(
+    'name=%sのinputタグに入力値が[%s]の場合にエラーメッセージが表示%sこと',
+    async (
+      inputName,
+      inputType,
+      result,
+      inputValue,
+      expectedErrorMsg,
+      errorIndex
+    ) => {
+      // Arrange
+      const inputElement = wrapper.find(`input[name="${inputName}"]`)
 
-    // Act
-    inputElement.setValue('abcABC0123456789')
-    await waitPerfectly()
+      // Act
+      inputElement.setValue(inputValue)
+      await waitPerfectly()
 
-    // Assert
-    expect(wrapper.findAll('.validation-error').at(0).text()).toBe('')
-  })
-
-  test('name=nameのinputタグに未入力の場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="name"]')
-
-    // Act
-    inputElement.setValue('')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.findAll('.validation-error').at(0).text()).toBe(
-      'nameは必須項目です'
-    )
-  })
-
-  test('name=nameのinputタグに半角英数字以外を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="name"]')
-
-    // Act
-    inputElement.setValue('あいうえお漢字カナ')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error:nth-of-type(1)').text()).toBe(
-      'nameは半角英数字で入力してください'
-    )
-  })
-
-  test('name=nameのinputタグに64文字以上を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="name"]')
-
-    // Act
-    inputElement.setValue(
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    )
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.find('.validation-error:nth-of-type(1)').text()).toBe(
-      'nameは64文字以内にしてください'
-    )
-  })
-
-  test('name=passwordのinputタグに半角英数字を入力した場合にエラーメッセージが表示されないこと', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
-
-    // Act
-    inputElement.setValue('abcABC0123456789')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.findAll('.validation-error').at(1).text()).toBe('')
-  })
-
-  test('name=passwordのinputタグに未入力の場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
-
-    // Act
-    inputElement.setValue('')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.findAll('.validation-error').at(1).text()).toBe(
-      'passwordは必須項目です'
-    )
-  })
-
-  test('name=passwordのinputタグに半角英数字以外を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
-
-    // Act
-    inputElement.setValue('あいうえお漢字カナ')
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.findAll('.validation-error').at(1).text()).toBe(
-      'passwordは半角英数字で入力してください'
-    )
-  })
-
-  test('name=passwordのinputタグに64文字以上を入力した場合にエラーメッセージが表示されること', async () => {
-    // Arrange
-    const inputElement = wrapper.find('input[name="password"]')
-
-    // Act
-    inputElement.setValue(
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    )
-    await waitPerfectly()
-
-    // Assert
-    expect(wrapper.findAll('.validation-error').at(1).text()).toBe(
-      'passwordは64文字以内にしてください'
-    )
-  })
+      // Assert
+      expect(wrapper.findAll('.validation-error').at(errorIndex).text()).toBe(
+        expectedErrorMsg
+      )
+    }
+  )
 
   test('nameとpasswordを入力した場合にSubmitボタンが活性になること', async () => {
     // Arrange

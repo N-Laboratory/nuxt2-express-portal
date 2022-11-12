@@ -2,7 +2,11 @@ import { Context } from '@nuxt/types'
 import { User } from '../model/User'
 
 export const state = () => ({
-  user: new User(0, '', ''),
+  user: {
+    id: 0,
+    name: '',
+    password: '',
+  } as User,
 })
 
 export const mutations = {
@@ -10,15 +14,15 @@ export const mutations = {
     state.user = user
   },
   updateName(state: { user: User }, name: string) {
-    state.user.setName(name)
+    state.user.name = name
   },
   updatePassword(state: { user: User }, password: string) {
-    state.user.setPassword(password)
+    state.user.password = password
   },
   resetUser(state: { user: User }) {
-    state.user.setId(0)
-    state.user.setName('')
-    state.user.setPassword('')
+    state.user.id = 0
+    state.user.name = ''
+    state.user.password = ''
   },
 }
 
