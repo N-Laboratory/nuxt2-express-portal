@@ -5,7 +5,7 @@
       <div class="item" :class="{ active: activeSecond }">STEP2<br />確認</div>
       <div class="item" :class="{ active: activeThird }">STEP3<br />完了</div>
     </template>
-    <template v-else>
+    <template v-if="enableFourthStep">
       <div class="item item-fourth" :class="{ active: activeFirst }">
         STEP1<br />認証
       </div>
@@ -30,6 +30,7 @@ export type DataType = {
   activeThird: boolean
   activeFourth: boolean
   enableThirdStep: boolean
+  enableFourthStep: boolean
   show: boolean
 }
 
@@ -44,7 +45,8 @@ export default Vue.extend({
       activeSecond: false,
       activeThird: false,
       activeFourth: false,
-      enableThirdStep: true,
+      enableThirdStep: false,
+      enableFourthStep: false,
       show: false,
     }
   },
@@ -72,7 +74,7 @@ export default Vue.extend({
         this.enableThirdStep = true
         break
       case '4':
-        this.enableThirdStep = false
+        this.enableFourthStep = true
         break
       default:
         this.enableThirdStep = true
