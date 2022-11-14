@@ -37,7 +37,6 @@
 import Vue from 'vue'
 import LoginForm from '../components/molecules/LoginForm.vue'
 import BaseLink from '../components/atoms/BaseLink.vue'
-import { $axios } from '../utils/api'
 import { User } from './../model/User'
 
 export type DataType = {
