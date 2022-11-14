@@ -83,13 +83,12 @@ export default function ({
   ) {
     const storeUser: User = store.state.user
     if (storeUser && storeUser.name !== '' && storeUser.password !== '') {
-      console.log('resetUserInfo')
-      // reset store userinfo
       store.commit('resetUser')
     }
   }
 
   if ((!from || (from && from.path === route.path)) && isProhibitAccessPath) {
+    store.commit('resetUser')
     redirect('/login')
   }
 }
