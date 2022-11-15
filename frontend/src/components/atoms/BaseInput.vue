@@ -14,7 +14,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    type: { type: String, default: '' },
+    type: { type: String, default: 'text' },
     name: { type: String, default: '' },
     value: { type: String, default: '' },
     placeholder: { type: String, default: '' },

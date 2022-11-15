@@ -34,7 +34,7 @@ describe('インプットタグの属性値確認', () => {
     // Assert
     expect(wrapper.attributes('name')).toBe('')
     expect(wrapper.attributes('placeholder')).toBe('')
-    expect(wrapper.attributes('type')).toBe('')
+    expect(wrapper.attributes('type')).toBe('text')
     expect((wrapper.element as HTMLInputElement).value).toBe('')
   })
 })
