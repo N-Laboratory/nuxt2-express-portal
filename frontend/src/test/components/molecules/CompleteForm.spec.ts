@@ -1,6 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import { waitPerfectly, getTestIdSelector } from '../../setup'
-import { User } from './../../../model/User'
 import CompleteForm from '~/components/molecules/CompleteForm.vue'
 
 let wrapper: Wrapper<CompleteForm, Element>

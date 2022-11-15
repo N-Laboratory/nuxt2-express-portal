@@ -1,7 +1,6 @@
 import Vuex, { Store } from 'vuex'
 import { shallowMount } from '@vue/test-utils'
 import { localVue, waitPerfectly } from '../../setup'
-import { User } from '../../../model/User'
 import Complete from '~/pages/resetPassword/complete.vue'
 
 jest.useFakeTimers()

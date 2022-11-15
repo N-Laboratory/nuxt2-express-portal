@@ -1,5 +1,4 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import { User } from '../../../model/User'
 import {
   getTestIdSelector,
   importValidationRules,
