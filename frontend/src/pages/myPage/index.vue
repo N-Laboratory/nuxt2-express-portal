@@ -32,8 +32,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { User } from '~/src/model/User'
-
+import { User } from '../../model/User'
 export type DataType = {
   user: User
   show: boolean
