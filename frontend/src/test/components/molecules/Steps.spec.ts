@@ -1,5 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import { localVue, waitPerfectly } from '../../setup'
+import { getTestIdSelector, localVue, waitPerfectly } from '../../setup'
 import Steps from '~/components/molecules/Steps.vue'
 
 let wrapper: Wrapper<Steps & { [key: string]: any }>
@@ -22,10 +22,10 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-two')).classes()).toContain(
       'active'
     )
-    expect(wrapper.find('.progressbar div:nth-child(1)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).toContain(
       'item-fourth'
     )
   })
@@ -42,11 +42,11 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-three')).classes()).toContain(
       'active'
     )
-    expect(
-      wrapper.find('.progressbar div:nth-child(1)').classes()
-    ).not.toContain('item-fourth')
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).not.toContain(
+      'item-fourth'
+    )
   })
 })

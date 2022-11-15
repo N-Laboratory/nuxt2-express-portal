@@ -28,7 +28,12 @@
 
       <div class="field mb-3">
         <div class="control">
-          <base-button text="次へ" :disabled="invalid" @click="goNext" />
+          <base-button
+            data-testid="raf-next"
+            text="次へ"
+            :disabled="invalid"
+            @click="goNext"
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import { waitPerfectly } from './../../setup'
+import { getTestIdSelector, waitPerfectly } from './../../setup'
 import HeaderMenu from '~/components/molecules/HeaderMenu.vue'
 let wrapper: Wrapper<HeaderMenu, Element>
 let router: any
@@ -24,23 +24,33 @@ afterEach(() => {
 describe('初期表示確認', () => {
   test('メニューのクラスに「is-active」が付加されていないこと', () => {
     // Assert
-    expect(wrapper.find('.navbar-burger').classes()).not.toContain('is-active')
-    expect(wrapper.find('.navbar-menu').classes()).not.toContain('is-active')
+    expect(
+      wrapper.find(getTestIdSelector('navbar-burger')).classes()
+    ).not.toContain('is-active')
+    expect(
+      wrapper.find(getTestIdSelector('navbar-menu')).classes()
+    ).not.toContain('is-active')
   })
 
   test('サブメニューが表示されていないこと', () => {
     // Assert
-    expect(wrapper.find('.navbar-dropdown').classes()).toContain('is-hidden')
+    expect(
+      wrapper.find(getTestIdSelector('navbar-dropdown')).classes()
+    ).toContain('is-hidden')
   })
 })
 
 describe('メニュー表示確認', () => {
   test('未ログイン時はSign up/Sign inメニューが表示されていること', () => {
     // Assert
-    expect(wrapper.find('.button:nth-of-type(1)').exists()).toBeTruthy()
-    expect(wrapper.find('.button:nth-of-type(1) span').text()).toBe('Sign up')
-    expect(wrapper.find('.button:nth-of-type(2)').exists()).toBeTruthy()
-    expect(wrapper.find('.button:nth-of-type(2) span').text()).toBe('Sign in')
+    expect(wrapper.find(getTestIdSelector('sign-up')).exists()).toBeTruthy()
+    expect(wrapper.find(getTestIdSelector('sign-up-text')).text()).toBe(
+      'Sign up'
+    )
+    expect(wrapper.find(getTestIdSelector('sign-in')).exists()).toBeTruthy()
+    expect(wrapper.find(getTestIdSelector('sign-in-text')).text()).toBe(
+      'Sign in'
+    )
   })
 
   test('ログイン時はSign outメニューが表示されていること', () => {
@@ -54,19 +64,26 @@ describe('メニュー表示確認', () => {
     })
 
     // Assert
-    expect(wrapper.find('.button:nth-of-type(1)').exists()).toBeTruthy()
-    expect(wrapper.find('.button:nth-of-type(1) span').text()).toBe('Sign out')
-    expect(wrapper.find('.button:nth-of-type(2)').exists()).toBeFalsy()
+    expect(wrapper.find(getTestIdSelector('sign-out')).exists()).toBeTruthy()
+    expect(wrapper.find(getTestIdSelector('sign-out-text')).text()).toBe(
+      'Sign out'
+    )
+    expect(wrapper.find(getTestIdSelector('sign-up')).exists()).toBeFalsy()
+    expect(wrapper.find(getTestIdSelector('sign-in')).exists()).toBeFalsy()
   })
 
   test('ハンバーガーメニュー押下でドロワーメニューが表示されること', async () => {
     // Arrange
-    const classListBeforeClick = wrapper.find('.navbar-menu').classes()
+    const classListBeforeClick = wrapper
+      .find(getTestIdSelector('navbar-menu'))
+      .classes()
 
     // Act
-    wrapper.find('.navbar-burger').trigger('click')
+    wrapper.find(getTestIdSelector('navbar-burger')).trigger('click')
     await waitPerfectly()
-    const classListAfterClick = wrapper.find('.navbar-menu').classes()
+    const classListAfterClick = wrapper
+      .find(getTestIdSelector('navbar-menu'))
+      .classes()
 
     // Assert
     expect(classListBeforeClick).not.toContain('is-active')
@@ -75,12 +92,16 @@ describe('メニュー表示確認', () => {
 
   test('メニュー押下でサブメニューが表示されること', async () => {
     // Arrange
-    const classListBeforeClick = wrapper.find('.navbar-dropdown').classes()
+    const classListBeforeClick = wrapper
+      .find(getTestIdSelector('navbar-dropdown'))
+      .classes()
 
     // Act
-    wrapper.find('.navbar-link').trigger('click')
+    wrapper.find(getTestIdSelector('navbar-link')).trigger('click')
     await waitPerfectly()
-    const classListAfterClick = wrapper.find('.navbar-dropdown').classes()
+    const classListAfterClick = wrapper
+      .find(getTestIdSelector('navbar-dropdown'))
+      .classes()
 
     // Assert
     expect(classListBeforeClick).toContain('is-hidden')
@@ -91,7 +112,7 @@ describe('メニュー表示確認', () => {
 describe('ページ遷移確認', () => {
   test('ホームアイコン押下でログインページに遷移すること', () => {
     // Act
-    wrapper.find('.fa-house').trigger('click')
+    wrapper.find(getTestIdSelector('home-icon')).trigger('click')
 
     // Assert
     expect(router.push).toBeCalledWith('/login')
@@ -99,7 +120,7 @@ describe('ページ遷移確認', () => {
 
   test('Sign up押下でログインページに遷移すること', () => {
     // Act
-    wrapper.find('.button:nth-of-type(1)').trigger('click')
+    wrapper.find(getTestIdSelector('sign-up')).trigger('click')
 
     // Assert
     expect(router.push).toBeCalledWith('/login')
@@ -107,7 +128,7 @@ describe('ページ遷移確認', () => {
 
   test('Sign in押下でログインページに遷移すること', () => {
     // Act
-    wrapper.find('.button:nth-of-type(2)').trigger('click')
+    wrapper.find(getTestIdSelector('sign-in')).trigger('click')
 
     // Assert
     expect(router.push).toBeCalledWith('/login')
@@ -115,7 +136,7 @@ describe('ページ遷移確認', () => {
 
   test('Abountメニュー押下でAboutページに遷移すること', () => {
     // Act
-    wrapper.find('.navbar-menu .navbar-item:nth-of-type(1)').trigger('click')
+    wrapper.find(getTestIdSelector('about-menu')).trigger('click')
 
     // Assert
     expect(router.push).toBeCalledWith('/contents/about')
@@ -135,7 +156,7 @@ test('Sign out押下でログアウト処理が実行されること', () => {
   })
 
   // Act
-  wrapper.find('.button:nth-of-type(1)').trigger('click')
+  wrapper.find(getTestIdSelector('sign-out')).trigger('click')
 
   // Assert
   expect(logoutSpy).toHaveBeenCalled()

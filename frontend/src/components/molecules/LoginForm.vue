@@ -15,6 +15,7 @@
               placeholder="Name"
             />
             <span
+              data-testid="lf-name-error-msg"
               class="validation-error has-text-danger has-text-weight-bold"
               >{{ errors[0] }}</span
             >
@@ -36,13 +37,19 @@
               placeholder="Password"
             />
             <span
+              data-testid="lf-password-error-msg"
               class="validation-error has-text-danger has-text-weight-bold"
               >{{ errors[0] }}</span
             >
           </validation-provider>
         </div>
       </div>
-      <base-button text="Submit" :disabled="invalid" @click="login" />
+      <base-button
+        data-testid="lf-submit"
+        text="Submit"
+        :disabled="invalid"
+        @click="login"
+      />
       <br />
     </div>
   </validation-observer>

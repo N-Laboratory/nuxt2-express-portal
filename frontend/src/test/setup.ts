@@ -35,3 +35,7 @@ export const importValidationRules = () => {
   localize('ja', ja)
   extend('alphaNum', alphaNum)
 }
+
+export const getTestIdSelector = (id: string) => {
+  return `[data-testid="${id}"]`
+}

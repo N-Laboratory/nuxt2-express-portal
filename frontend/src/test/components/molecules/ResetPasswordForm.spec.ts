@@ -1,6 +1,11 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import { User } from '../../../model/User'
-import { importValidationRules, localVue, waitPerfectly } from '../../setup'
+import {
+  getTestIdSelector,
+  importValidationRules,
+  localVue,
+  waitPerfectly,
+} from '../../setup'
 import ResetPasswordForm from '~/components/molecules/ResetPasswordForm.vue'
 
 let wrapper: Wrapper<ResetPasswordForm & { [key: string]: any }>
@@ -33,7 +38,7 @@ test('親コンポーネントから受け取った値がpropsのvalueに設定�
   expect(user.id).toBe(0)
   expect(user.name).toBe('Test Name')
   expect(user.password).toBe('Test Password')
-  expect(wrapper.find('.text-break').text()).toBe('Test Name')
+  expect(wrapper.find(getTestIdSelector('rpf-name')).text()).toBe('Test Name')
 })
 
 describe('プログレスバーの表示確認', () => {
@@ -54,10 +59,10 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-two')).classes()).toContain(
       'active'
     )
-    expect(wrapper.find('.progressbar div:nth-child(1)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).toContain(
       'item-fourth'
     )
   })
@@ -79,12 +84,12 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-three')).classes()).toContain(
       'active'
     )
-    expect(
-      wrapper.find('.progressbar div:nth-child(1)').classes()
-    ).not.toContain('item-fourth')
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).not.toContain(
+      'item-fourth'
+    )
   })
 })
 
@@ -130,7 +135,9 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       await waitPerfectly()
 
       // Assert
-      expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
+      expect(wrapper.find(getTestIdSelector('ii-error-msg')).text()).toBe(
+        expectedErrorMsg
+      )
     }
   )
 
@@ -149,7 +156,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     // 事前にflushPromisesをしないとv-slotのinvalidの初期値がfalseになる
     await waitPerfectly()
     const submitConditionBeforeInput = (
-      wrapper.find('.button').element as HTMLInputElement
+      wrapper.find(getTestIdSelector('rpf-next')).element as HTMLInputElement
     ).disabled
 
     // Act
@@ -157,7 +164,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     wrapper.props().value.password = 'abcABC0123456789'
     await waitPerfectly()
     const submitConditionAfterInput = (
-      wrapper.find('.button').element as HTMLInputElement
+      wrapper.find(getTestIdSelector('rpf-next')).element as HTMLInputElement
     ).disabled
 
     // Assert
@@ -169,7 +176,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
 describe('次へ押下時の動作確認', () => {
   test('次へ押下時にemitされること', async () => {
     // Act
-    await wrapper.find('.button').trigger('click')
+    await wrapper.find(getTestIdSelector('rpf-next')).trigger('click')
 
     // Assert
     expect(wrapper.emitted('click')).toBeTruthy()
@@ -180,12 +187,14 @@ describe('次へ押下時の動作確認', () => {
     wrapper.find('input[name="password"]').setValue('テスト')
     wrapper.props().value.password = 'テスト'
     await waitPerfectly()
-    const msgBeforeClick = wrapper.find('.validation-error').text()
+    const msgBeforeClick = wrapper
+      .find(getTestIdSelector('ii-error-msg'))
+      .text()
 
     // Act
     wrapper.vm.goNext()
     await waitPerfectly()
-    const msgAfterClick = wrapper.find('.validation-error').text()
+    const msgAfterClick = wrapper.find(getTestIdSelector('ii-error-msg')).text()
 
     // Assert
     expect(msgBeforeClick).toBe('passwordは半角英数字で入力してください')

@@ -10,7 +10,11 @@
       <div class="field mb-4">
         <label class="label is-size-5">Name</label>
         <div class="control">
-          <span class="is-size-5 text-break" v-text="value.name"></span>
+          <span
+            data-testid="rpf-name"
+            class="is-size-5 text-break"
+            v-text="value.name"
+          ></span>
         </div>
       </div>
 
@@ -26,7 +30,12 @@
 
       <div class="field mb-3">
         <div class="control">
-          <base-button text="次へ" :disabled="invalid" @click="goNext" />
+          <base-button
+            data-testid="rpf-next"
+            text="次へ"
+            :disabled="invalid"
+            @click="goNext"
+          />
         </div>
       </div>
     </div>

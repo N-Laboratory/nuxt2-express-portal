@@ -1,6 +1,11 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import { User } from './../../../model/User'
-import { importValidationRules, localVue, waitPerfectly } from './../../setup'
+import {
+  getTestIdSelector,
+  importValidationRules,
+  localVue,
+  waitPerfectly,
+} from './../../setup'
 import CheckAccountForm from '~/components/molecules/CheckAccountForm.vue'
 
 let wrapper: Wrapper<CheckAccountForm & { [key: string]: any }>
@@ -45,10 +50,10 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-two')).classes()).toContain(
       'active'
     )
-    expect(wrapper.find('.progressbar div:nth-child(1)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).toContain(
       'item-fourth'
     )
   })
@@ -70,12 +75,12 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-three')).classes()).toContain(
       'active'
     )
-    expect(
-      wrapper.find('.progressbar div:nth-child(1)').classes()
-    ).not.toContain('item-fourth')
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).not.toContain(
+      'item-fourth'
+    )
   })
 })
 
@@ -107,7 +112,9 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       await waitPerfectly()
 
       // Assert
-      expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
+      expect(wrapper.find(getTestIdSelector('ii-error-msg')).text()).toBe(
+        expectedErrorMsg
+      )
     }
   )
 })
@@ -139,12 +146,12 @@ describe('次へ押下時の動作確認', () => {
     wrapper.setProps({ value: { name: 'テスト' } })
     wrapper.find('input[name="name"]').trigger('input')
     await waitPerfectly()
-    const beforeMsg = wrapper.find('.validation-error').text()
+    const beforeMsg = wrapper.find(getTestIdSelector('ii-error-msg')).text()
 
     // Act
     wrapper.vm.goNext()
     await waitPerfectly()
-    const afterMsg = wrapper.find('.validation-error').text()
+    const afterMsg = wrapper.find(getTestIdSelector('ii-error-msg')).text()
 
     // Assert
     expect(beforeMsg).toBe('nameは半角英数字で入力してください')

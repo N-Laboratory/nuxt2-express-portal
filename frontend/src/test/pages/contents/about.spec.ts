@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import { getTestIdSelector } from '../../setup'
 import About from '~/pages/contents/about.vue'
 
 test('Aboutページが表示されていること', () => {
@@ -6,5 +7,5 @@ test('Aboutページが表示されていること', () => {
   const wrapper = mount(About)
 
   // Assert
-  expect(wrapper.find('section').exists()).toBeTruthy()
+  expect(wrapper.find(getTestIdSelector('about-page')).exists()).toBeTruthy()
 })

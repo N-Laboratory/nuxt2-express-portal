@@ -1,8 +1,8 @@
 <template>
   <div class="sf-site-all">
-    <header-menu />
-    <nuxt class="sf-site-content" />
-    <footer-menu />
+    <header-menu data-testid="default-header" />
+    <nuxt class="sf-site-content" data-testid="default-content" />
+    <footer-menu data-testid="default-footer" />
   </div>
 </template>
 

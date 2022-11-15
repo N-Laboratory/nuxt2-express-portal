@@ -1,6 +1,11 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import { User } from '../../../model/User'
-import { importValidationRules, localVue, waitPerfectly } from '../../setup'
+import {
+  getTestIdSelector,
+  importValidationRules,
+  localVue,
+  waitPerfectly,
+} from '../../setup'
 import RegisterAccountForm from '~/components/molecules/RegisterAccountForm.vue'
 
 let wrapper: Wrapper<RegisterAccountForm & { [key: string]: any }>
@@ -53,10 +58,10 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-two')).classes()).toContain(
       'active'
     )
-    expect(wrapper.find('.progressbar div:nth-child(1)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).toContain(
       'item-fourth'
     )
   })
@@ -78,12 +83,12 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-three')).classes()).toContain(
       'active'
     )
-    expect(
-      wrapper.find('.progressbar div:nth-child(1)').classes()
-    ).not.toContain('item-fourth')
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).not.toContain(
+      'item-fourth'
+    )
   })
 })
 
@@ -176,9 +181,9 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       await waitPerfectly()
 
       // Assert
-      expect(wrapper.findAll('.validation-error').at(errorIndex).text()).toBe(
-        expectedErrorMsg
-      )
+      expect(
+        wrapper.findAll(getTestIdSelector('ii-error-msg')).at(errorIndex).text()
+      ).toBe(expectedErrorMsg)
     }
   )
 
@@ -197,7 +202,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     // 事前にflushPromisesをしないとv-slotのinvalidの初期値がfalseになる
     await waitPerfectly()
     const submitConditionBeforeInput = (
-      wrapper.find('.button').element as HTMLInputElement
+      wrapper.find(getTestIdSelector('raf-next')).element as HTMLInputElement
     ).disabled
 
     // Act
@@ -206,7 +211,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     })
     await waitPerfectly()
     const submitConditionAfterInput = (
-      wrapper.find('.button').element as HTMLInputElement
+      wrapper.find(getTestIdSelector('raf-next')).element as HTMLInputElement
     ).disabled
 
     // Assert
@@ -218,7 +223,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
 describe('次へ押下時の動作確認', () => {
   test('次へ押下時にemitされること', async () => {
     // Act
-    await wrapper.find('.button').trigger('click')
+    await wrapper.find(getTestIdSelector('raf-next')).trigger('click')
 
     // Assert
     expect(wrapper.emitted('click')).toBeTruthy()
@@ -229,12 +234,18 @@ describe('次へ押下時の動作確認', () => {
     wrapper.setProps({ value: { name: 'テスト' } })
     wrapper.find(`input[name="name"]`).trigger('input')
     await waitPerfectly()
-    const msgBeforeClick = wrapper.findAll('.validation-error').at(0).text()
+    const msgBeforeClick = wrapper
+      .findAll(getTestIdSelector('ii-error-msg'))
+      .at(0)
+      .text()
 
     // Act
     wrapper.vm.goNext()
     await waitPerfectly()
-    const msgAfterClick = wrapper.findAll('.validation-error').at(0).text()
+    const msgAfterClick = wrapper
+      .findAll(getTestIdSelector('ii-error-msg'))
+      .at(0)
+      .text()
 
     // Assert
     expect(msgBeforeClick).toBe('nameは半角英数字で入力してください')

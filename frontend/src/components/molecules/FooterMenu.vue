@@ -1,6 +1,6 @@
 <template>
   <footer class="footer has-background-white p-4">
-    <div class="content has-text-centered">
+    <div data-testid="footer-content" class="content has-text-centered">
       <div>Copyright © N-LAB All Rights Reserved.</div>
     </div>
   </footer>

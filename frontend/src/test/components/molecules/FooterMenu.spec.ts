@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import { getTestIdSelector } from '../../setup'
 import FooterMenu from '~/components/molecules/FooterMenu.vue'
 
 test('フッターが表示されていること', () => {
@@ -6,7 +7,7 @@ test('フッターが表示されていること', () => {
   const wrapper = mount(FooterMenu)
 
   // Assert
-  expect(wrapper.find('.content').text()).toBe(
+  expect(wrapper.find(getTestIdSelector('footer-content')).text()).toBe(
     'Copyright © N-LAB All Rights Reserved.'
   )
 })

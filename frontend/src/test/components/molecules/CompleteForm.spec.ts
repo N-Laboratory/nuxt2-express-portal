@@ -1,5 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import { waitPerfectly } from '../../setup'
+import { waitPerfectly, getTestIdSelector } from '../../setup'
 import { User } from './../../../model/User'
 import CompleteForm from '~/components/molecules/CompleteForm.vue'
 
@@ -28,10 +28,16 @@ describe('テキスト表示確認', () => {
     })
 
     // Assert
-    expect(wrapper.find('.title').text()).toBe('こんにちは')
-    expect(wrapper.find('label:nth-child(1)').text()).toBe('Hello')
-    expect(wrapper.findAll('.text-break').at(0).text()).toContain('日本太郎')
-    expect(wrapper.findAll('.text-break').at(1).text()).toContain('password')
+    expect(wrapper.find(getTestIdSelector('cf-title')).text()).toBe(
+      'こんにちは'
+    )
+    expect(wrapper.find(getTestIdSelector('cf-msg')).text()).toBe('Hello')
+    expect(wrapper.find(getTestIdSelector('cf-name')).text()).toContain(
+      '日本太郎'
+    )
+    expect(wrapper.find(getTestIdSelector('cf-password')).text()).toContain(
+      'password'
+    )
   })
 
   test('タイトルとメッセージが初期値でテキストに設定されていること', () => {
@@ -49,10 +55,14 @@ describe('テキスト表示確認', () => {
     })
 
     // Assert
-    expect(wrapper.find('.title').text()).toBe('')
-    expect(wrapper.find('label:nth-child(1)').text()).toBe('')
-    expect(wrapper.findAll('.text-break').at(0).text()).toContain('日本花子')
-    expect(wrapper.findAll('.text-break').at(1).text()).toContain('admin')
+    expect(wrapper.find(getTestIdSelector('cf-title')).text()).toBe('')
+    expect(wrapper.find(getTestIdSelector('cf-msg')).text()).toBe('')
+    expect(wrapper.find(getTestIdSelector('cf-name')).text()).toContain(
+      '日本花子'
+    )
+    expect(wrapper.find(getTestIdSelector('cf-password')).text()).toContain(
+      'admin'
+    )
   })
 })
 
@@ -73,10 +83,10 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-two')).classes()).toContain(
       'active'
     )
-    expect(wrapper.find('.progressbar div:nth-child(1)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).toContain(
       'item-fourth'
     )
   })
@@ -97,12 +107,12 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-three')).classes()).toContain(
       'active'
     )
-    expect(
-      wrapper.find('.progressbar div:nth-child(1)').classes()
-    ).not.toContain('item-fourth')
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).not.toContain(
+      'item-fourth'
+    )
   })
 })
 
@@ -123,7 +133,7 @@ test('TOPページへ戻る押下時にTOPページへ遷移すること', () =>
   })
 
   // Act
-  wrapper.find('.has-text-link').trigger('click')
+  wrapper.find(getTestIdSelector('cf-back')).trigger('click')
 
   // Assert
   expect(router.push).toBeCalledWith('/login')

@@ -1,6 +1,11 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import { User } from '../../../model/User'
-import { importValidationRules, localVue, waitPerfectly } from '../../setup'
+import {
+  getTestIdSelector,
+  importValidationRules,
+  localVue,
+  waitPerfectly,
+} from '../../setup'
 import LoginForm from '~/components/molecules/LoginForm.vue'
 
 let wrapper: Wrapper<LoginForm & { [key: string]: any }>
@@ -69,14 +74,21 @@ describe('inputタグに値を入力した際の動作確認', () => {
 
 describe('インプットタグ入力時のvee-validate動作確認', () => {
   test.each([
-    ['name', '半角英数字', 'されない', 'abcABC0123456789', '', 0],
+    [
+      'name',
+      '半角英数字',
+      'されない',
+      'abcABC0123456789',
+      '',
+      'lf-name-error-msg',
+    ],
     [
       'name',
       '半角英数字以外',
       'される',
       'あいうえお漢字カナ',
       'nameは半角英数字で入力してください',
-      0,
+      'lf-name-error-msg',
     ],
     [
       'name',
@@ -84,17 +96,24 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       'される',
       'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
       'nameは64文字以内にしてください',
-      0,
+      'lf-name-error-msg',
     ],
-    ['name', '未入力', 'される', '', 'nameは必須項目です', 0],
-    ['password', '半角英数字', 'されない', 'abcABC0123456789', '', 1],
+    ['name', '未入力', 'される', '', 'nameは必須項目です', 'lf-name-error-msg'],
+    [
+      'password',
+      '半角英数字',
+      'されない',
+      'abcABC0123456789',
+      '',
+      'lf-password-error-msg',
+    ],
     [
       'password',
       '半角英数字以外',
       'される',
       'あいうえお漢字カナ',
       'passwordは半角英数字で入力してください',
-      1,
+      'lf-password-error-msg',
     ],
     [
       'password',
@@ -102,9 +121,16 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       'される',
       'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
       'passwordは64文字以内にしてください',
-      1,
+      'lf-password-error-msg',
     ],
-    ['password', '未入力', 'される', '', 'passwordは必須項目です', 1],
+    [
+      'password',
+      '未入力',
+      'される',
+      '',
+      'passwordは必須項目です',
+      'lf-password-error-msg',
+    ],
   ])(
     'name=%sのinputタグに入力値が[%s]の場合にエラーメッセージが表示%sこと',
     async (
@@ -113,7 +139,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       result,
       inputValue,
       expectedErrorMsg,
-      errorIndex
+      selector
     ) => {
       // Arrange
       const inputElement = wrapper.find(`input[name="${inputName}"]`)
@@ -123,7 +149,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       await waitPerfectly()
 
       // Assert
-      expect(wrapper.findAll('.validation-error').at(errorIndex).text()).toBe(
+      expect(wrapper.find(getTestIdSelector(selector)).text()).toBe(
         expectedErrorMsg
       )
     }
@@ -134,7 +160,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     // 事前にflushPromisesをしないとv-slotのinvalidの初期値がfalseになる
     await waitPerfectly()
     const submitConditionBeforeInput = (
-      wrapper.find('.button').element as HTMLInputElement
+      wrapper.find(getTestIdSelector('lf-submit')).element as HTMLInputElement
     ).disabled
 
     // Act
@@ -142,7 +168,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     wrapper.find('input[name="password"]').setValue('abcABC0123456789')
     await waitPerfectly()
     const submitConditionAfterInput = (
-      wrapper.find('.button').element as HTMLInputElement
+      wrapper.find(getTestIdSelector('lf-submit')).element as HTMLInputElement
     ).disabled
 
     // Assert
@@ -154,7 +180,7 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
 describe('Submit押下時の動作確認', () => {
   test('Submit押下時にemitされること', async () => {
     // Act
-    await wrapper.find('.button').trigger('click')
+    await wrapper.find(getTestIdSelector('lf-submit')).trigger('click')
 
     // Assert
     expect(wrapper.emitted('click')).toBeTruthy()
@@ -164,12 +190,16 @@ describe('Submit押下時の動作確認', () => {
     // Arrange
     wrapper.find('input[name="name"]').setValue('テスト')
     await waitPerfectly()
-    const msgBeforeClick = wrapper.findAll('.validation-error').at(0).text()
+    const msgBeforeClick = wrapper
+      .find(getTestIdSelector('lf-name-error-msg'))
+      .text()
 
     // Act
     wrapper.vm.login()
     await waitPerfectly()
-    const msgAfterClick = wrapper.findAll('.validation-error').at(0).text()
+    const msgAfterClick = wrapper
+      .find(getTestIdSelector('lf-name-error-msg'))
+      .text()
 
     // Assert
     expect(msgBeforeClick).toBe('nameは半角英数字で入力してください')

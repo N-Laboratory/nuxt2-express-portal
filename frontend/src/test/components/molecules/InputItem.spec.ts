@@ -1,5 +1,10 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import { importValidationRules, localVue, waitPerfectly } from './../../setup'
+import {
+  getTestIdSelector,
+  importValidationRules,
+  localVue,
+  waitPerfectly,
+} from './../../setup'
 import InputItem from '~/components/molecules/InputItem.vue'
 let wrapper: Wrapper<InputItem & { [key: string]: any }>
 jest.useFakeTimers()
@@ -34,7 +39,9 @@ describe('画面項目表示確認', () => {
     })
 
     // Assert
-    expect(wrapper.find('label').text()).toBe('Test title')
+    expect(wrapper.find(getTestIdSelector('ii-title')).text()).toBe(
+      'Test title'
+    )
     expect(wrapper.find('input').attributes('type')).toBe('textarea')
     expect(wrapper.find('input').attributes('name')).toBe('Test name')
     expect(wrapper.find('input').attributes('placeholder')).toBe(
@@ -47,7 +54,7 @@ describe('画面項目表示確認', () => {
 
   test('タイトルとInputタグの属性値が初期値で設定されていること', () => {
     // Assert
-    expect(wrapper.find('label').text()).toBe('')
+    expect(wrapper.find(getTestIdSelector('ii-title')).text()).toBe('')
     expect(wrapper.find('input').attributes('type')).toBe('text')
     expect(wrapper.find('input').attributes('name')).toBe('name')
     expect(wrapper.find('input').attributes('placeholder')).toBe('')
@@ -83,7 +90,9 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       await waitPerfectly()
 
       // Assert
-      expect(wrapper.find('.validation-error').text()).toBe(expectedErrorMsg)
+      expect(wrapper.find(getTestIdSelector('ii-error-msg')).text()).toBe(
+        expectedErrorMsg
+      )
     }
   )
 })

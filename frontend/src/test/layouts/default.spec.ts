@@ -1,4 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
+import { getTestIdSelector } from '../setup'
 import Default from '~/layouts/default.vue'
 
 let wrapper: Wrapper<Default, Element>
@@ -23,16 +24,22 @@ afterEach(() => {
 describe('表示確認', () => {
   test('ヘッダーが表示されていること', () => {
     // Assert
-    expect(wrapper.find('nav').exists()).toBeTruthy()
+    expect(
+      wrapper.find(getTestIdSelector('default-header')).exists()
+    ).toBeTruthy()
   })
 
   test('コンテンツが表示されていること', () => {
     // Assert
-    expect(wrapper.find('.sf-site-content').exists()).toBeTruthy()
+    expect(
+      wrapper.find(getTestIdSelector('default-content')).exists()
+    ).toBeTruthy()
   })
 
   test('フッターが表示されていること', () => {
     // Assert
-    expect(wrapper.find('footer').exists()).toBeTruthy()
+    expect(
+      wrapper.find(getTestIdSelector('default-footer')).exists()
+    ).toBeTruthy()
   })
 })

@@ -14,7 +14,7 @@
                   </tr>
                   <tr>
                     <td class="has-text-weight-bold">Name:</td>
-                    <td v-text="user.name"></td>
+                    <td data-testid="my-page-name" v-text="user.name"></td>
                   </tr>
                   <tr>
                     <td class="has-text-weight-bold">Password:</td>

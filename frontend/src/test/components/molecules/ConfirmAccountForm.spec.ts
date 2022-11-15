@@ -1,5 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import { waitPerfectly } from '../../setup'
+import { getTestIdSelector, waitPerfectly } from '../../setup'
 import { User } from './../../../model/User'
 import ConfirmAccountForm from '~/components/molecules/ConfirmAccountForm.vue'
 let wrapper: Wrapper<ConfirmAccountForm, Element>
@@ -24,14 +24,18 @@ afterEach(() => {
 
 test('親コンポーネントから受け取ったNameとPasswordが表示されていること', () => {
   // Act
-  expect(wrapper.findAll('.text-break').at(0).text()).toContain('name')
-  expect(wrapper.findAll('.text-break').at(1).text()).toContain('password')
+  expect(wrapper.find(getTestIdSelector('caf-name')).text()).toContain('name')
+  expect(wrapper.find(getTestIdSelector('caf-password')).text()).toContain(
+    'password'
+  )
 })
 
 describe('タイトルの表示確認', () => {
   test('親コンポーネントから受け取った値がタイトルとして表示されていること', () => {
     // Assert
-    expect(wrapper.find('.title').text()).toBe('Test Title')
+    expect(wrapper.find(getTestIdSelector('caf-title')).text()).toBe(
+      'Test Title'
+    )
   })
 
   test('初期値がタイトルとして表示されていること', () => {
@@ -47,7 +51,7 @@ describe('タイトルの表示確認', () => {
     })
 
     // Assert
-    expect(wrapper.find('.title').text()).toBe('')
+    expect(wrapper.find(getTestIdSelector('caf-title')).text()).toBe('')
   })
 })
 
@@ -68,10 +72,10 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(2)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-two')).classes()).toContain(
       'active'
     )
-    expect(wrapper.find('.progressbar div:nth-child(1)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).toContain(
       'item-fourth'
     )
   })
@@ -92,12 +96,12 @@ describe('プログレスバーの表示確認', () => {
     await waitPerfectly()
 
     // Assert
-    expect(wrapper.find('.progressbar div:nth-child(3)').classes()).toContain(
+    expect(wrapper.find(getTestIdSelector('step-three')).classes()).toContain(
       'active'
     )
-    expect(
-      wrapper.find('.progressbar div:nth-child(1)').classes()
-    ).not.toContain('item-fourth')
+    expect(wrapper.find(getTestIdSelector('step-one')).classes()).not.toContain(
+      'item-fourth'
+    )
   })
 })
 

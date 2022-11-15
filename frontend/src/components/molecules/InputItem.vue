@@ -1,6 +1,10 @@
 <template>
   <div class="field mb-4">
-    <label class="label is-size-5" v-text="title"></label>
+    <label
+      data-testid="ii-title"
+      class="label is-size-5"
+      v-text="title"
+    ></label>
     <div class="control">
       <validation-provider
         v-slot="{ errors }"
@@ -15,9 +19,11 @@
           :placeholder="placeholder"
           @input="sendValue"
         />
-        <span class="validation-error has-text-danger has-text-weight-bold">{{
-          errors[0]
-        }}</span>
+        <span
+          data-testid="ii-error-msg"
+          class="validation-error has-text-danger has-text-weight-bold"
+          >{{ errors[0] }}</span
+        >
       </validation-provider>
     </div>
   </div>

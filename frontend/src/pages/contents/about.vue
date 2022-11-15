@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-testid="about-page">
     <section class="section">
       <div class="section-heading has-text-white mt-4 has-text-centered">
         <h3 class="title is-2 has-text-white">About Me</h3>

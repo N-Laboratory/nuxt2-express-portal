@@ -1,5 +1,6 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import { User } from '../../../model/User'
+import { getTestIdSelector } from '../../setup'
 import Index from '~/pages/myPage/index.vue'
 
 let wrapper: Wrapper<Index, Element>
@@ -31,7 +32,7 @@ test('ユーザー情報がStoreに保存されている情報で設定されて
 
 test('プロフェール欄にユーザー情報（Name）が表示されていること', () => {
   // Assert
-  expect(wrapper.find('table tr:nth-of-type(2) td:nth-of-type(2)').text()).toBe(
+  expect(wrapper.find(getTestIdSelector('my-page-name')).text()).toBe(
     'Test Name'
   )
 })

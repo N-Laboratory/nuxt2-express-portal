@@ -1,21 +1,51 @@
 <template>
   <div v-if="show" class="progressbar">
     <template v-if="enableThirdStep">
-      <div class="item" :class="{ active: activeFirst }">STEP1<br />入力</div>
-      <div class="item" :class="{ active: activeSecond }">STEP2<br />確認</div>
-      <div class="item" :class="{ active: activeThird }">STEP3<br />完了</div>
+      <div class="item" data-testid="step-one" :class="{ active: activeFirst }">
+        STEP1<br />入力
+      </div>
+      <div
+        class="item"
+        data-testid="step-two"
+        :class="{ active: activeSecond }"
+      >
+        STEP2<br />確認
+      </div>
+      <div
+        class="item"
+        data-testid="step-three"
+        :class="{ active: activeThird }"
+      >
+        STEP3<br />完了
+      </div>
     </template>
     <template v-if="enableFourthStep">
-      <div class="item item-fourth" :class="{ active: activeFirst }">
+      <div
+        class="item item-fourth"
+        data-testid="step-one"
+        :class="{ active: activeFirst }"
+      >
         STEP1<br />認証
       </div>
-      <div class="item item-fourth" :class="{ active: activeSecond }">
+      <div
+        class="item item-fourth"
+        data-testid="step-two"
+        :class="{ active: activeSecond }"
+      >
         STEP2<br />登録
       </div>
-      <div class="item item-fourth" :class="{ active: activeThird }">
+      <div
+        class="item item-fourth"
+        data-testid="step-three"
+        :class="{ active: activeThird }"
+      >
         STEP3<br />確認
       </div>
-      <div class="item item-fourth" :class="{ active: activeFourth }">
+      <div
+        class="item item-fourth"
+        data-testid="step-four"
+        :class="{ active: activeFourth }"
+      >
         STEP4<br />完了
       </div>
     </template>
