@@ -96,3 +96,15 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
     }
   )
 })
+
+test('インプットタグ入力時にemitされること', () => {
+  // Arrange
+  const inputElement = wrapper.find('input')
+
+  // Act
+  inputElement.setValue('Hello Vue!!')
+  inputElement.trigger('input')
+
+  // Assert
+  expect(wrapper.emitted('input')![1][0]).toEqual('Hello Vue!!')
+})
