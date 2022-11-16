@@ -1,7 +1,9 @@
 <template>
   <div class="back-area">
     <font-awesome-icon class="chevron-left" icon="fa-chevron-left" />
-    <span class="is-size-5 back-btn" @click="goBack">戻る</span>
+    <span class="is-size-5 back-btn" data-testid="bs-back" @click="goBack"
+      >戻る</span
+    >
   </div>
 </template>
 <script lang="ts">
