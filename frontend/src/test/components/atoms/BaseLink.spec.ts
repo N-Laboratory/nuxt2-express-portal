@@ -10,7 +10,6 @@ beforeEach(() => {
 
 afterEach(() => {
   wrapper.destroy()
-  router = null
 })
 
 describe('aタグ押下時の動作確認', () => {

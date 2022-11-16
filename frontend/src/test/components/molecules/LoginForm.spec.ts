@@ -46,8 +46,8 @@ describe('inputタグに値を入力した際の動作確認', () => {
 
     // Act
     inputElement.setValue('Hello Vue!!')
-    await waitPerfectly()
     inputElement.trigger('input')
+    await waitPerfectly()
 
     // Assert
     expect(wrapper.emitted('input')![0][0].id).toEqual(0)
@@ -61,8 +61,8 @@ describe('inputタグに値を入力した際の動作確認', () => {
 
     // Act
     inputElement.setValue('Hello Vue!!')
-    await waitPerfectly()
     inputElement.trigger('input')
+    await waitPerfectly()
 
     // Assert
     expect(wrapper.emitted('input')![0][0].id).toEqual(0)

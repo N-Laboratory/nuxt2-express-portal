@@ -51,6 +51,7 @@ describe('メニュー表示確認', () => {
     expect(wrapper.find(getTestIdSelector('sign-in-text')).text()).toBe(
       'Sign in'
     )
+    expect(wrapper.find(getTestIdSelector('sign-out')).exists()).toBeFalsy()
   })
 
   test('ログイン時はSign outメニューが表示されていること', () => {
