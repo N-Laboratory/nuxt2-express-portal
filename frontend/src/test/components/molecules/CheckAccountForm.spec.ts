@@ -116,15 +116,35 @@ describe('インプットタグ入力時のvee-validate動作確認', () => {
       )
     }
   )
+
+  test('nameを入力した場合に次へボタンが活性になること', async () => {
+    // Arrange
+    // 事前にflushPromisesをしないとv-slotのinvalidの初期値がfalseになる
+    await waitPerfectly()
+    const submitConditionBeforeInput = (
+      wrapper.find(getTestIdSelector('caf-next')).element as HTMLInputElement
+    ).disabled
+
+    // Act
+    wrapper.setProps({ value: { name: 'abcABC0123456789' } })
+    wrapper.find('input[name="name"]').trigger('input')
+    await waitPerfectly()
+    const submitConditionAfterInput = (
+      wrapper.find(getTestIdSelector('caf-next')).element as HTMLInputElement
+    ).disabled
+
+    // Assert
+    expect(submitConditionBeforeInput).toBe(true)
+    expect(submitConditionAfterInput).toBe(false)
+  })
 })
 
-test('インプットタグ入力時にemitされること', async () => {
+test('インプットタグ入力時にemitされること', () => {
   // Arrange
   const inputElement = wrapper.find('input')
 
   // Act
   inputElement.setValue('Hello Vue!!')
-  await waitPerfectly()
   inputElement.trigger('input')
 
   // Assert
@@ -155,6 +175,5 @@ describe('次へ押下時の動作確認', () => {
     // Assert
     expect(beforeMsg).toBe('nameは半角英数字で入力してください')
     expect(afterMsg).toBe('')
-    expect(wrapper.emitted('click')).toBeTruthy()
   })
 })
