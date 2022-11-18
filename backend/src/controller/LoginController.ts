@@ -13,7 +13,11 @@ export class LoginController {
     response.header('Content-Type', 'application/json; charset=utf-8')
     const user = await this.userRepository.findOne({
       where: { name: request.body.name },
+    }).catch(() => {
+      response.status(401).send('{ "message": "login error" }')
+      return
     })
+
     if (!user) {
       response.status(401).send('{ "message": "login error" }')
       return
@@ -34,7 +38,7 @@ export class LoginController {
     const token = jwt.sign(payload, 'secret', {
       expiresIn: this.expirationTime,
     })
-    response.send('{ "token": "' + token + '" }')
+    response.status(200).send('{ "token": "' + token + '" }')
   }
 
   async user(request: Request, response: Response) {
@@ -44,7 +48,7 @@ export class LoginController {
 
     jwt.verify(token, 'secret', (err, user) => {
       if (!err) {
-        return response.json({
+        return response.status(200).json({
           user,
         })
       }
