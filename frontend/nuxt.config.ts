@@ -14,14 +14,9 @@ export default {
   },
 
   css: ['@/assets/css/style.css', 'bulma/css/bulma.css'],
-  plugins: [
-    '@/plugins/axios-accessor',
-    '@/plugins/vee-validate.ts',
-  ],
+  plugins: ['@/plugins/axios-accessor', '@/plugins/vee-validate.ts'],
   components: true,
-  buildModules: [
-    '@nuxt/typescript-build',
-  ],
+  buildModules: ['@nuxt/typescript-build'],
   modules: [
     '@nuxtjs/axios',
     'nuxt-fontawesome',
