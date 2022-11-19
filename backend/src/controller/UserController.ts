@@ -51,15 +51,4 @@ export class UserController {
     })
     return user ? true : false
   }
-
-  async login(request: Request) {
-    const user = await this.userRepository.findOne({
-      where: { name: request.body.name },
-    })
-    if (user) {
-      const hashPassword = generateBySalt(request.body.password, user.salt)
-      return hashPassword === user.password ? true : false
-    }
-    return false
-  }
 }
