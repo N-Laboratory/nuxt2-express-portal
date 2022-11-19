@@ -45,7 +45,7 @@ AppDataSource.initialize()
     // insert new users for test
     await AppDataSource.manager.save(
       AppDataSource.manager.create(User, {
-        name: 'Timber',
+        name: 'admin',
         password: hashData[0],
         salt: hashData[1],
       })
