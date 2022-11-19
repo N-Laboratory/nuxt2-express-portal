@@ -2,7 +2,7 @@
 import { Request } from 'express'
 import { AppDataSource } from '../data-source'
 import { User } from '../entity/User'
-import { generate, generateBySalt } from '../utils/HashGenerator'
+import { generate } from '../utils/HashGenerator'
 
 export class UserController {
   private userRepository = AppDataSource.getRepository(User)
@@ -12,7 +12,7 @@ export class UserController {
   }
 
   async one(request: Request) {
-    return this.userRepository.findOne({ where: { id: request.params.id } })
+    return await this.getUser('id', request.params.id)
   }
 
   async save(request: Request) {
@@ -24,31 +24,28 @@ export class UserController {
     if (request.body.id === 0) {
       delete request.body.id
     }
+
     return this.userRepository.save(request.body)
   }
 
   async remove(request: Request) {
-    const userToRemove = await this.userRepository.findOneBy({
-      id: request.params.id,
-    })
-    await this.userRepository.remove(userToRemove)
-    return 'OK'
+    const removeUser = await this.getUser('id', request.params.id)
+    return await this.userRepository.remove(removeUser)
   }
 
   async checkUser(request: Request) {
-    const user = await this.userRepository.findOne({
-      where: { name: request.body.name },
-    })
-    if (user) {
-      return user.id.toString()
-    }
-    return '0'
+    const user = await this.getUser('name', request.body.name)
+    return user ? user.id.toString() : '0'
   }
 
   async existUser(request: Request) {
-    const user = await this.userRepository.findOne({
-      where: { name: request.body.name },
-    })
+    const user = await this.getUser('name', request.body.name)
     return user ? true : false
+  }
+
+  getUser(columnName: string, data: any) {
+    return this.userRepository.findOne({
+      where: { [columnName]: data },
+    })
   }
 }
