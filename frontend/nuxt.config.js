@@ -1,5 +1,4 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'vue-portal',
     htmlAttrs: {
@@ -14,24 +13,15 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/style.css', 'bulma/css/bulma.css'],
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/axios-accessor',
     '@/plugins/vee-validate.ts',
-    // { src: '@/plugins/router-option.ts', ssr: false },
   ],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
   ],
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
     'nuxt-fontawesome',
@@ -46,7 +36,6 @@ export default {
       },
     ],
   },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vee-validate/dist/rules', 'auth'],
   },
@@ -66,12 +55,6 @@ export default {
   },
   loading: false,
   auth: {
-    // TODO set http-only to cookie
-    // cookie: {
-    //   options: {
-    //     httpOnly: true
-    //   },
-    // },
     localStorage: false,
     redirect: {
       home: '/myPage',
@@ -89,8 +72,6 @@ export default {
           logout: false,
           user: { url: '/api/auth/user', method: 'get', propertyName: 'user' },
         },
-        // tokenRequired: true,
-        // tokenType: 'bearer'
       },
     },
   },
