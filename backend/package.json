@@ -4,7 +4,7 @@
   "description": "Awesome project developed with TypeORM.",
   "type": "module",
   "config": {
-    "path": "./src/test/controller/LoginControler.spec.ts"
+    "path": "./src/test/controller/LoginController.spec.ts"
   },
   "dependencies": {
     "crypto-js": "^4.1.1",

@@ -11,12 +11,14 @@ export class LoginController {
 
   async login(request: Request, response: Response) {
     response.header('Content-Type', 'application/json; charset=utf-8')
-    const user = await this.userRepository.findOne({
-      where: { name: request.body.name },
-    }).catch(() => {
-      response.status(401).send('{ "message": "login error" }')
-      return
-    })
+    const user = await this.userRepository
+      .findOne({
+        where: { name: request.body.name },
+      })
+      .catch(() => {
+        response.status(401).send('{ "message": "login error" }')
+        return
+      })
 
     if (!user) {
       response.status(401).send('{ "message": "login error" }')
@@ -51,13 +53,6 @@ export class LoginController {
         return response.status(200).json({
           user,
         })
-      }
-      if (err instanceof jwt.TokenExpiredError) {
-        console.error('トークンの有効期限が切れています。', err)
-      } else if (err instanceof jwt.JsonWebTokenError) {
-        console.error('トークンが不正です。', err)
-      } else {
-        console.error('トークンの検証でエラーが発生しました。', err)
       }
       return response.sendStatus(403)
     })
