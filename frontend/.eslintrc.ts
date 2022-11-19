@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true,
   env: {
     browser: true,
@@ -12,6 +12,5 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
-    'no-console': 'off',
   },
 }
