@@ -229,7 +229,7 @@ describe('ユーザー情報のCRUD処理の動作確認', () => {
     const result = await uc.existUser(req)
 
     // Assert
-    expect(result).toBeTruthy()
+    expect(result).toBe(true)
   })
 
   test('ユーザー名が一致するユーザーが存在しない場合はfalseが返却されること', async () => {
@@ -244,6 +244,6 @@ describe('ユーザー情報のCRUD処理の動作確認', () => {
     const result = await uc.existUser(req)
 
     // Assert
-    expect(result).toBeFalsy()
+    expect(result).toBe(false)
   })
 })
