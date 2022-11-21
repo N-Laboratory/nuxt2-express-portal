@@ -26,6 +26,8 @@ export default {
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.vue',
     '<rootDir>/src/pages/**/*.vue',
+    '<rootDir>/src/middleware/**/*.ts',
+    '<rootDir>/src/store/**/*.ts',
   ],
   testEnvironment: 'jest-environment-jsdom',
 }
