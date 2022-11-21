@@ -88,3 +88,9 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# sonarqube
+.scannerwork
+
+# jest-result-file
+test-report.xml
