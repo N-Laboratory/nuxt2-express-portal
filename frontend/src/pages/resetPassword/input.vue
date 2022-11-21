@@ -36,9 +36,9 @@ export default Vue.extend({
     },
   },
   methods: {
-    goNext() {
+    async goNext() {
       try {
-        this.$router.push('confirm')
+        await this.$router.push('confirm')
       } catch (error: any) {
         this.$nuxt.error(error)
       }

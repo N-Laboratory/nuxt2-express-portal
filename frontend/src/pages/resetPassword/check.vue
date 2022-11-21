@@ -40,7 +40,7 @@ export default Vue.extend({
     async goNext() {
       await $axios
         .$post('/api/checkUser', this.user)
-        .then((userId: number) => {
+        .then(async (userId: number) => {
           if (userId === 0) {
             this.$swal({
               title: '入力エラー',
@@ -52,7 +52,7 @@ export default Vue.extend({
             this.$store.commit('updateUser', this.user)
 
             try {
-              this.$router.push('input')
+              await this.$router.push('input')
             } catch (error: any) {
               this.$nuxt.error(error)
             }

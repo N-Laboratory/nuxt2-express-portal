@@ -1,5 +1,5 @@
 export default {
-  testResultsProcessor: "jest-sonar-reporter",
+  testResultsProcessor: 'jest-sonar-reporter',
   setupFiles: ['<rootDir>/src/test/setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

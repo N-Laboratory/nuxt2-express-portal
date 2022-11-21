@@ -17,7 +17,6 @@ export class LoginController {
       })
       .catch(() => {
         response.status(401).send('{ "message": "login error" }')
-        return
       })
 
     if (!user) {

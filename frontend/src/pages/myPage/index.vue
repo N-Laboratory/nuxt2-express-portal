@@ -7,7 +7,7 @@
             <div class="card-content">
               <h3 class="title is-4 mt-6 has-text-centered">Profile</h3>
               <div class="content mb-6">
-                <table class="table-profile">
+                <table class="table-profile" aria-describedby="profile">
                   <tr>
                     <th colspan="1"></th>
                     <th colspan="2"></th>

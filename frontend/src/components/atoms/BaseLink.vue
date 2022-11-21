@@ -10,9 +10,9 @@ export default Vue.extend({
     path: { type: String, default: '/' },
   },
   methods: {
-    goNext(): void {
+    async goNext() {
       try {
-        this.$router.push(this.path)
+        await this.$router.push(this.path)
       } catch (error: any) {
         this.$nuxt.error(error)
       }

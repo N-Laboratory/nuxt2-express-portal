@@ -47,7 +47,7 @@ export default Vue.extend({
     async goNext() {
       await $axios
         .$post('/api/existUser', this.user)
-        .then((existUser: boolean) => {
+        .then(async (existUser: boolean) => {
           if (existUser) {
             this.$swal({
               title: '入力エラー',
@@ -58,7 +58,7 @@ export default Vue.extend({
             this.$store.commit('updateUser', this.user)
 
             try {
-              this.$router.push('confirm')
+              await this.$router.push('confirm')
             } catch (error: any) {
               this.$nuxt.error(error)
             }

@@ -26,7 +26,7 @@
               <h3 class="title is-4 has-text-centered">Profile</h3>
 
               <div class="content">
-                <table class="table-profile">
+                <table class="table-profile" aria-describedby="profile">
                   <tr>
                     <th colspan="1"></th>
                     <th colspan="2"></th>

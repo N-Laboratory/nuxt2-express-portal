@@ -2,36 +2,36 @@ import { Store } from 'vuex'
 import { Route } from 'vue-router'
 import { User } from '../model/User'
 
-interface pathList {
+interface PathList {
   from: string[]
   to: string
 }
 
-const createAccountInput: pathList = {
+const createAccountInput: PathList = {
   from: ['/login', '/createAccount/confirm'],
   to: '/createAccount/input',
 }
-const createAccountConfirm: pathList = {
+const createAccountConfirm: PathList = {
   from: ['/createAccount/input'],
   to: '/createAccount/confirm',
 }
-const createAccountComplete: pathList = {
+const createAccountComplete: PathList = {
   from: ['/createAccount/confirm'],
   to: '/createAccount/complete',
 }
-const resetPasswordCheck: pathList = {
+const resetPasswordCheck: PathList = {
   from: ['/login'],
   to: '/resetPassword/check',
 }
-const resetPasswordInput: pathList = {
+const resetPasswordInput: PathList = {
   from: ['/resetPassword/check', '/resetPassword/confirm'],
   to: '/resetPassword/input',
 }
-const resetPasswordConfirm: pathList = {
+const resetPasswordConfirm: PathList = {
   from: ['/resetPassword/input'],
   to: '/resetPassword/confirm',
 }
-const resetPasswordComplete: pathList = {
+const resetPasswordComplete: PathList = {
   from: ['/resetPassword/confirm'],
   to: '/resetPassword/complete',
 }

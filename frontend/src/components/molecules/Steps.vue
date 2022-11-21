@@ -126,7 +126,6 @@ export default Vue.extend({
   position: relative;
   width: 33%;
   text-align: center;
-  position: relative;
   align-items: center;
   justify-content: center;
   padding: 5px 0;
