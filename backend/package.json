@@ -4,14 +4,17 @@
   "description": "Awesome project developed with TypeORM.",
   "type": "module",
   "config": {
-    "path": "./src/test/controller/LoginController.spec.ts"
+    "path": "./src/test/controller/LoginController.spec.ts",
+    "token": "sqp_e9db63477483c467e5c338c50044f066f4207ec3"
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "helmet": "^6.0.0",
+    "jest-sonar-reporter": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
+    "sonarqube-scanner": "^2.8.2",
     "sqlite3": "^5.0.2",
     "typeorm": "0.3.7"
   },
@@ -41,6 +44,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
     "serve": "nodemon -x \"npm start\" -w src/ -e ts,json",
     "test": "jest %npm_package_config_path%",
-    "test:all": "jest"
+    "test:all": "jest --coverage",
+    "sonar": "sonar-scanner -Dsonar.login=%npm_package_config_token%"
   }
 }
