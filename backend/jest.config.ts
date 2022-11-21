@@ -1,4 +1,5 @@
 export default {
+  testResultsProcessor: "jest-sonar-reporter",
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
