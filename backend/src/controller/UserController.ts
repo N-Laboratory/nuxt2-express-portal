@@ -2,7 +2,7 @@
 import { Request } from 'express'
 import { AppDataSource } from '../data-source'
 import { User } from '../entity/User'
-import { generate } from '../utils/HashGenerator'
+import { generateHashAndSalt } from '../utils/HashGenerator'
 
 export class UserController {
   private userRepository = AppDataSource.getRepository(User)
@@ -16,7 +16,7 @@ export class UserController {
   }
 
   async save(request: Request) {
-    const hashData = generate(request.body.password)
+    const hashData = generateHashAndSalt(request.body.password)
     request.body.password = hashData[0]
     request.body.salt = hashData[1]
 

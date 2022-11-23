@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { AppDataSource } from '../data-source'
 import { User } from '../entity/User'
 import jwt from 'jsonwebtoken'
-import { generateBySalt } from '../utils/HashGenerator'
+import { generateHashBySalt } from '../utils/HashGenerator'
 
 export class LoginController {
   private userRepository = AppDataSource.getRepository(User)
@@ -25,7 +25,7 @@ export class LoginController {
     }
 
     // パスワード（ハッシュ）の取得
-    const hashPassword = generateBySalt(request.body.password, user.salt)
+    const hashPassword = generateHashBySalt(request.body.password, user.salt)
     if (hashPassword !== user.password) {
       response.status(401).send('{ "message": "login error" }')
       return

@@ -2,9 +2,9 @@ import { LoginController } from './../../controller/LoginController'
 import jwt from 'jsonwebtoken'
 import { AppDataSource } from '../../data-source'
 import { User } from '../../entity/User'
-import { generate } from '../../utils/HashGenerator'
+import { generateHashAndSalt } from '../../utils/HashGenerator'
 
-const hashData = generate('password')
+const hashData = generateHashAndSalt('password')
 const lc = new LoginController()
 const res = {
   status: jest.fn().mockReturnThis(),

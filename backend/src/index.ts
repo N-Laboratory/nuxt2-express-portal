@@ -1,7 +1,7 @@
 import express, { Request, Response, json } from 'express'
 import { AppDataSource } from './data-source'
 import { Routes } from './routes'
-import { generate } from './utils/HashGenerator'
+import { generateHashAndSalt } from './utils/HashGenerator'
 import { User } from './entity/User'
 import helmet from 'helmet'
 
@@ -38,7 +38,7 @@ AppDataSource.initialize()
     // start express server
     app.listen(3000)
 
-    const hashData = generate('password')
+    const hashData = generateHashAndSalt('password')
     // insert new users for test
     await AppDataSource.manager.save(
       AppDataSource.manager.create(User, {

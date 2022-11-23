@@ -4,7 +4,7 @@ import { User } from '../../entity/User'
 import * as hg from '../../utils/HashGenerator'
 
 jest
-  .spyOn(hg, 'generate')
+  .spyOn(hg, 'generateHashAndSalt')
   .mockImplementation(() => ['generatedHash', 'generatedSalt'])
 const uc = new UserController()
 
