@@ -17,5 +17,8 @@ export default {
     '^.+\\.js$': 'ts-jest',
   },
   collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/src/controller/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/controller/**/*.ts',
+    '<rootDir>/src/utils/**/*.ts',
+  ],
 }
