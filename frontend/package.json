@@ -4,6 +4,7 @@
   "private": true,
   "config": {
     "path": "./src/test/components/molecules/CheckAccountForm.spec.ts",
+    "e2e": "./e2e/test/createAccount/input.spec.ts",
     "token": "sqp_670a696cebb7e69738c64e12ad961d83354e7cc7"
   },
   "scripts": {
@@ -17,7 +18,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
     "test": "jest %npm_package_config_path%",
     "test:all": "jest --coverage",
-    "test:e2e": "jest --config jest.e2e.config.ts --runInBand --detectOpenHandles ./e2e/test/contents/about.spec.ts",
+    "test:e2e": "jest --config jest.e2e.config.ts --runInBand --detectOpenHandles %npm_package_config_e2e%",
     "sonar": "sonar-scanner -Dsonar.login=%npm_package_config_token%",
     "serve": "npm run serve --prefix ../backend",
     "start:all": "run-p dev serve"
