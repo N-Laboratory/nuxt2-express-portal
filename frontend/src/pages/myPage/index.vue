@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-fullheight">
-    <div class="hero-body">
+    <div class="hero-body" data-testid="my-page">
       <div v-if="show" class="container">
         <div class="column is-half is-offset-3">
           <div class="card">
