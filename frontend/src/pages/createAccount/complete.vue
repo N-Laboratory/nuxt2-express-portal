@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-fullheight is-dark">
-    <div class="hero-body">
+    <div class="hero-body" data-testid="ca-complete">
       <div class="container">
         <div class="column is-half is-offset-3">
           <div class="box">

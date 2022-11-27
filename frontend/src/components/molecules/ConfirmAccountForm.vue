@@ -34,7 +34,7 @@
 
     <div class="field mb-3">
       <div class="control">
-        <base-button text="次へ" @click="goNext" />
+        <base-button text="次へ" @click="goNext" data-testid="caf-next" />
       </div>
     </div>
   </div>
