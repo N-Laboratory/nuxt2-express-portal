@@ -94,3 +94,6 @@ sw.*
 
 # jest-result-file
 test-report.xml
+
+# e2e-evidence
+src/e2e/evidence/**/*.png
