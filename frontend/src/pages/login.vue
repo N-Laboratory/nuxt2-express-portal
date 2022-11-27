@@ -1,6 +1,6 @@
 <template>
   <section class="container logi-page is-dark">
-    <div class="columns is-multiline mt-0">
+    <div class="columns is-multiline mt-0" data-testid="login-page">
       <div class="column is-8 is-offset-2 register">
         <div class="columns">
           <div class="column left">
