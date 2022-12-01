@@ -16,12 +16,20 @@
             <login-form v-model="user" @click="login" />
             <div class="columns">
               <div class="column">
-                <base-link class="has-text-link" path="/resetPassword/check">
+                <base-link
+                  class="has-text-link"
+                  path="/resetPassword/check"
+                  data-testid="forgot-password"
+                >
                   Forgot Password?
                 </base-link>
               </div>
               <div class="column">
-                <base-link class="has-text-link" path="/createAccount/input">
+                <base-link
+                  class="has-text-link"
+                  path="/createAccount/input"
+                  data-testid="create-account"
+                >
                   Create an Account
                 </base-link>
               </div>
