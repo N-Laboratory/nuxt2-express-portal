@@ -16,7 +16,7 @@ it('1:パスワード登録画面が表示されること', async () => {
 
   // Assert
   expect(existsPage).toBeTruthy()
-}, 10000)
+}, 20000)
 
 describe('バリデーションチェック', () => {
   test.each([
