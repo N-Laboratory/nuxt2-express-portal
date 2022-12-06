@@ -77,7 +77,7 @@ describe('バリデーションチェック', () => {
         fullPage: true,
       })
 
-      var errorMsgList = await page.$$eval(
+      const errorMsgList = await page.$$eval(
         '[data-testid="ii-error-msg"]',
         (list) => {
           return list.map((data) => data.textContent)

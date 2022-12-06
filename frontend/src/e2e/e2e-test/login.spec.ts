@@ -109,7 +109,7 @@ describe('バリデーションチェック', () => {
         fullPage: true,
       })
 
-      var errorMsg = await page.$eval(
+      const errorMsg = await page.$eval(
         `[data-testid="${errorMsgSelector}"]`,
         (element) => element.textContent
       )
