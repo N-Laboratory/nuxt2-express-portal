@@ -30,4 +30,5 @@ export default {
     '<rootDir>/src/store/**/*.ts',
   ],
   testEnvironment: 'jest-environment-jsdom',
+  testPathIgnorePatterns: ["<rootDir>/src/e2e"],
 }
