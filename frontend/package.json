@@ -4,7 +4,7 @@
   "private": true,
   "config": {
     "path": "./src/test/components/molecules/CheckAccountForm.spec.ts",
-    "e2e": "./e2e/test/createAccount/input.spec.ts",
+    "e2e": "./e2e/e2e-test/createAccount/input.spec.ts",
     "token": "sqp_670a696cebb7e69738c64e12ad961d83354e7cc7"
   },
   "scripts": {
