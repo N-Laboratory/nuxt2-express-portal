@@ -36,18 +36,23 @@ export default {
   },
   srcDir: 'src/',
   axios: {
-    proxy: true,
+    // SPAの場合はproxyの利用は不可のため、baseURLを使用する
+    // proxy: true,
+    baseURL: "http://localhost:3000",
   },
   router: {
     middleware: ['router-option', 'auth'],
   },
-  proxy: {
-    // proxy http://localhost:3030/api/hoge to http://localhost:3000/hoge
-    '/api/': {
-      target: 'http://localhost:3000',
-      pathRewrite: { '^/api/': '/' },
-    },
-  },
+  // proxy: {
+  //   // proxy http://localhost:3030/api/hoge to http://localhost:3000/hoge
+  //   '/api/': {
+  //     target: 'http://localhost:3000',
+  //     pathRewrite: { '^/api/': '/' },
+  //     onProxyReq(proxyReq: any, req: any, res: any) {
+  //       console.log(proxyReq);
+  //     }
+  //   },
+  // },
   loading: false,
   auth: {
     localStorage: false,
@@ -70,4 +75,9 @@ export default {
       },
     },
   },
+  ssr: false,
+  target: 'static',
+  generate: {
+    fallback: 'error.html'
+  }
 }

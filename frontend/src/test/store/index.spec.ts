@@ -78,38 +78,3 @@ describe('mutationsの動作確認', () => {
     expect(userAfterReset).toEqual(initialUser)
   })
 })
-
-describe('actionsの動作確認', () => {
-  describe('nuxtServerInitの動作確認', () => {
-    const redirectMock = jest.fn()
-    afterEach(() => {
-      redirectMock.mockClear()
-    })
-
-    test('アクセス元のURLが/の場合、ログイン画面へ遷移すること', () => {
-      // Arrange
-
-      // Act
-      store.dispatch('nuxtServerInit', {
-        redirect: redirectMock,
-        req: { url: '/' },
-      })
-
-      // Assert
-      expect(redirectMock).toBeCalledWith('/login')
-    })
-
-    test('アクセス元のURLが/以外の場合、ログイン画面へ遷移しないこと', () => {
-      // Arrange
-
-      // Act
-      store.dispatch('nuxtServerInit', {
-        redirect: redirectMock,
-        req: { url: '/login' },
-      })
-
-      // Assert
-      expect(redirectMock).not.toBeCalledWith('/login')
-    })
-  })
-})

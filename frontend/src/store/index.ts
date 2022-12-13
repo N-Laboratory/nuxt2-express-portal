@@ -26,15 +26,6 @@ export const mutations = {
   },
 }
 
-export const actions = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  nuxtServerInit(vueContext: any, context: Context) {
-    if (context.req.url === '/') {
-      context.redirect('/login')
-    }
-  },
-}
-
 // classic mode
 // export default () =>
 //   new Store({

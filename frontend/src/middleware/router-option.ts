@@ -87,7 +87,10 @@ export default function ({
     }
   }
 
-  if ((!from || (from && from.path === route.path)) && isProhibitAccessPath) {
+  if (
+    ((!from || (from && from.path === route.path)) && isProhibitAccessPath) ||
+    route.path === '/'
+  ) {
     store.commit('resetUser')
     redirect('/login')
   }

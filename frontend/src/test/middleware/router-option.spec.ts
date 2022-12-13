@@ -162,3 +162,15 @@ test('直接アクセス禁止のページにアクセスした場合にloginペ
   // Assert
   expect(redirect).toBeCalledWith('/login')
 })
+
+test('「/」にアクセスした場合にloginページにリダイレクトされること', () => {
+  // Arrange
+  from.path = '/createAccount/confirm'
+  route.path = '/'
+
+  // Act
+  RouterOption({ store, from, route, redirect })
+
+  // Assert
+  expect(redirect).toBeCalledWith('/login')
+})
