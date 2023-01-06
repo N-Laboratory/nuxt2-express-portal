@@ -225,7 +225,7 @@ $ npm run sonar:win
 You can access http://localhost:9000/dashboard?id=portal-backend to show result.
 
 ## License
-MIT
+[MIT](LICENSE.md)
 
 ## Author
 
