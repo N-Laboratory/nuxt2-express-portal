@@ -1,10 +1,21 @@
 <h1 align="center">Portal Site For Nuxt2 Study</h1>
-<p>
-  <a href="https://www.npmjs.com/package/vue-portal" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/vue-portal.svg">
-  </a>
-  <a href="https://twitter.com/中西直樹" target="_blank">
-    <img alt="Twitter: 中西直樹" src="https://img.shields.io/twitter/follow/中西直樹.svg?style=social" />
+<p align="center">
+  <img src="https://img.shields.io/badge/-Typescript-00bfff.svg?logo=typescript&style=flat">
+  <img src="https://img.shields.io/badge/-Nuxt.js-008000.svg?logo=nuxt.js&style=flat">
+  <img src="https://img.shields.io/badge/-Node.js-lightyellow.svg?logo=node.js&style=flat">
+  <img src="https://img.shields.io/badge/-FontAwesome-ffff00.svg?logo=fontawesome&style=flat">
+  <img src="https://img.shields.io/badge/-JWT-black.svg?logo=jsonwebtokens&style=flat">
+  <img src="https://img.shields.io/badge/-Bulma-white.svg?logo=bulma&style=flat">
+  <img src="https://img.shields.io/badge/-Express-1572B6.svg?logo=express&style=flat">
+  <img src="https://img.shields.io/badge/-Jest-C21325.svg?logo=jest&style=flat">
+  <img src="https://img.shields.io/badge/-SonarQube-white.svg?logo=sonarqube&style=flat">
+  <img src="https://img.shields.io/badge/-Windows-0078D6.svg?logo=windows&style=flat">
+  <img src="https://img.shields.io/badge/-Mac-grey.svg?logo=macos&style=flat">
+  <img src="https://img.shields.io/badge/-Linux-black.svg?logo=linux&style=flat">
+  <img src="https://img.shields.io/badge/-VSCode-007ACC.svg?logo=visualstudiocode&style=flat">
+  <img src="https://img.shields.io/badge/license-MIT-green">
+  <a href="https://twitter.com/NaokiNakanishi" target="_blank">
+    <img alt="Twitter: NaokiNakanishi" src="https://img.shields.io/twitter/follow/NaokiNakanishi.svg?style=social" />
   </a>
 </p>
 
