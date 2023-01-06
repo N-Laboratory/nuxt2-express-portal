@@ -22,10 +22,32 @@ project_root
 └── backend (Express)
 ```
 Frontend project is created by Nuxt2.
+This project use following.
+* TypeScript
+* Nuxt/auth
+* Nuxt/axios
+* Font Awesome
+* Bulma CSS
+* Vee-Validate
+* SweetAlert2
+* Jest
+* Jest Puppeteer
+* SonarQube
+
+
 Backend project is created by Express.
+This project use following.
+* TypeScript
+* CryptoJS
+* Helmet
+* TypeORM
+* Jest
+* SonarQube
+* JSONWebToken
 
 ## Contents
 
+1. [Prerequisites](#prerequisites)
 1. [Demo](#demo)
 1. [Install](#install)
 1. [Usage](#usage)
@@ -35,7 +57,12 @@ Backend project is created by Express.
 1. [License](#license)
 1. [Author](#author)
 
-## [Demo](http://demo.com)
+## Prerequisites
+Make sure you have installed all of the following prerequisites on your development machine:
+* Git - Download & Install Git. OSX and Linux machines typically have this already installed.
+* Node.js - Download & Install Node.js (Install v16.x, do not install v18) and the npm package manager.
+
+## Demo
 
 ## Install
 
