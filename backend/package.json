@@ -44,7 +44,9 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
     "serve": "nodemon -x \"npm start\" -w src/ -e ts,json",
     "test": "jest $npm_package_config_path",
+    "test:win": "jest %npm_package_config_path%",
     "test:all": "jest --coverage",
-    "sonar": "sonar-scanner -Dsonar.login=$npm_package_config_token"
+    "sonar": "sonar-scanner -Dsonar.login=$npm_package_config_token",
+    "sonar:win": "sonar-scanner -Dsonar.login=%npm_package_config_token%"
   }
 }
