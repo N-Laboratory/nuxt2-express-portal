@@ -74,6 +74,15 @@ Make sure you have installed all of the following prerequisites on your developm
 * Node.js - Download & Install Node.js (Install v16.x, do not install v18) and the npm package manager.
 
 ## Demo
+* Create account
+<img src="https://user-images.githubusercontent.com/42198184/211146473-c1eb0d04-f2bb-4c88-a2fd-cf8a8e2cec79.gif" style="width:70%;">
+
+* Change account password
+<img src="https://user-images.githubusercontent.com/42198184/211146470-02c2f366-da47-46cf-a9c9-7a1d6c64802d.gif" style="width:70%;">
+
+* Login and show account info
+<img src="https://user-images.githubusercontent.com/42198184/211146469-dec581c3-9357-4851-8140-082408c80d8d.gif" style="width:70%;">
+
 
 ## Install
 
