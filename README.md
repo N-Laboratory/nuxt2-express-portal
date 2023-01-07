@@ -83,7 +83,7 @@ Make sure you have installed all of the following prerequisites on your developm
 $ cd frontend
 
 # Install dependencies
-$ npm ci
+$ npm install
 ```
 
 ### ・ Backend
@@ -92,7 +92,7 @@ $ npm ci
 $ cd backend
 
 # Install dependencies
-$ npm ci
+$ npm install
 ```
 
 ## Usage
