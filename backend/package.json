@@ -12,7 +12,7 @@
     "express": "^4.17.2",
     "helmet": "^6.0.0",
     "jest-sonar-reporter": "^2.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "reflect-metadata": "^0.1.13",
     "sonarqube-scanner": "^2.8.2",
     "sqlite3": "^5.0.2",
