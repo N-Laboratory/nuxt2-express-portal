@@ -1,4 +1,4 @@
-<h1 align="center">Portal Site For Nuxt2 Study</h1>
+<h1 align="center">Portal Site For Nuxt2 Study!</h1>
 <p align="center">
   <img src="https://img.shields.io/badge/-Typescript-00bfff.svg?logo=typescript&style=flat">
   <img src="https://img.shields.io/badge/-Nuxt.js-008000.svg?logo=nuxt.js&style=flat">
