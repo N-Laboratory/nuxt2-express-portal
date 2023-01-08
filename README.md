@@ -14,8 +14,8 @@
   <img src="https://img.shields.io/badge/-Linux-black.svg?logo=linux&style=flat">
   <img src="https://img.shields.io/badge/-VSCode-007ACC.svg?logo=visualstudiocode&style=flat">
   <img src="https://img.shields.io/badge/license-MIT-green">
-  <a href="https://twitter.com/NaokiNakanishi" target="_blank">
-    <img alt="Twitter: NaokiNakanishi" src="https://img.shields.io/twitter/follow/NaokiNakanishi.svg?style=social" />
+  <a href="https://twitter.com/NL4boratory" target="_blank">
+    <img alt="Twitter: N-LAB" src="https://img.shields.io/twitter/follow/NL4boratory.svg?style=social" />
   </a>
 </p>
 
@@ -279,4 +279,4 @@ You can access http://localhost:9000/dashboard?id=portal-backend to show result.
 👤 **Naoki Nakanishi**
 
 * Website: https://n-laboratory.jp/nlab/
-* Twitter: [@中西直樹](https://twitter.com/NaokiNakanishi)
+* Twitter: [@N-LAB](https://twitter.com/NL4boratory)
