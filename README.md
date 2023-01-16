@@ -17,6 +17,9 @@
   <a href="https://twitter.com/NL4boratory" target="_blank">
     <img alt="Twitter: N-LAB" src="https://img.shields.io/twitter/follow/NL4boratory.svg?style=social" />
   </a>
+  <a href="https://github.com/N-Laboratory" target="_blank">
+    <img src="https://img.shields.io/badge/-FollowMyAccount-grey.svg?logo=github&style=flat">
+  </a>
 </p>
 
 I created this project for a nuxt learning purpose.
