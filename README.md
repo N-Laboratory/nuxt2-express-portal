@@ -22,6 +22,8 @@
   </a>
 </p>
 
+[日本語版 README はこちら](https://github.com/N-Laboratory/nuxt2-express-portal/blob/main/README-jp.md)
+
 I created this project for a nuxt learning purpose.
 You can do the following in this application.
 * Create account
